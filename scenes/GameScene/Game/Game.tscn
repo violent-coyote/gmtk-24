@@ -1,0 +1,414 @@
+[gd_scene load_steps=26 format=3 uid="uid://8pd03t4bx574"]
+
+[ext_resource type="PackedScene" uid="uid://daix2ixjp0erh" path="res://scenes/GameScene/Game/unit_base.tscn" id="1_ctym0"]
+[ext_resource type="PackedScene" uid="uid://bid27wf21e2o8" path="res://scenes/GameScene/GameUI.tscn" id="1_dnn8v"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
+noise_type = 2
+seed = -11960
+frequency = 0.0913
+fractal_octaves = 1
+fractal_lacunarity = 4.19
+fractal_gain = 3.23
+cellular_jitter = 0.87
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 7
+domain_warp_fractal_lacunarity = 6.54
+domain_warp_fractal_gain = 0.44
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r8uol"]
+in_3d_space = true
+seamless_blend_skirt = 0.069
+noise = SubResource("FastNoiseLite_wifk6")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ywjpo"]
+noise = SubResource("FastNoiseLite_wifk6")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_drwp7"]
+frames = 3
+speed_scale = 1.8
+frame_0/texture = SubResource("NoiseTexture2D_r8uol")
+frame_0/duration = 1.58
+frame_1/texture = SubResource("NoiseTexture2D_ywjpo")
+frame_1/duration = 1.32
+frame_2/texture = SubResource("NoiseTexture2D_ywjpo")
+frame_2/duration = 1.5
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v00vw"]
+sky_top_color = Color(0.651365, 0.298882, 0.546098, 1)
+sky_horizon_color = Color(0.957816, 0.81202, 7.16232e-07, 1)
+sky_curve = 0.0284197
+sky_energy_multiplier = 1.47
+sky_cover = SubResource("AnimatedTexture_drwp7")
+sky_cover_modulate = Color(1, 0.203922, 0.345098, 1)
+ground_bottom_color = Color(0.188029, 0.250981, 0.637617, 1)
+ground_horizon_color = Color(1, 1, 0.329412, 1)
+ground_curve = 0.00574349
+sun_angle_max = 6.26
+sun_curve = 2.4
+energy_multiplier = 1.45
+
+[sub_resource type="Sky" id="Sky_rjaxs"]
+sky_material = SubResource("ProceduralSkyMaterial_v00vw")
+
+[sub_resource type="Environment" id="Environment_rgouf"]
+background_mode = 2
+background_energy_multiplier = 0.56
+sky = SubResource("Sky_rjaxs")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.47
+ambient_light_energy = 0.26
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.73
+tonemap_white = 0.53
+ssr_enabled = true
+ssr_fade_in = 0.487352
+ssr_fade_out = 0.870551
+ssr_depth_tolerance = 1.31
+ssao_radius = 1.11
+ssao_intensity = 4.33
+ssao_detail = 1.1
+ssao_sharpness = 1.0
+ssil_radius = 2.67
+ssil_sharpness = 1.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.16
+sdfgi_normal_bias = 1.2
+glow_normalized = true
+glow_intensity = 2.1
+glow_strength = 0.49
+glow_bloom = 0.22
+glow_blend_mode = 1
+glow_hdr_threshold = 1.73
+glow_map_strength = 0.0
+fog_mode = 1
+fog_light_color = Color(0.929735, 0.937032, 0.948505, 1)
+fog_density = 1.0
+volumetric_fog_density = 0.0066
+volumetric_fog_gi_inject = 1.12
+volumetric_fog_anisotropy = -0.73
+volumetric_fog_length = 33.67
+volumetric_fog_detail_spread = 3.73213
+volumetric_fog_ambient_inject = 1.24
+volumetric_fog_sky_affect = 0.094
+volumetric_fog_temporal_reprojection_enabled = false
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ed31u"]
+auto_exposure_enabled = true
+dof_blur_near_distance = 0.3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_euyp7"]
+frequency = 0.0152
+fractal_lacunarity = 2.66
+fractal_gain = 1.15
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v4xu5"]
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ab2ul"]
+seamless = true
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tnas"]
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow6pu"]
+invert = true
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_egmbt"]
+resource_local_to_scene = true
+frames = 4
+speed_scale = -0.5
+frame_0/texture = SubResource("NoiseTexture2D_v4xu5")
+frame_1/texture = SubResource("NoiseTexture2D_ab2ul")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("NoiseTexture2D_7tnas")
+frame_2/duration = 1.0
+frame_3/texture = SubResource("NoiseTexture2D_ow6pu")
+frame_3/duration = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5rbfq"]
+noise_type = 2
+frequency = 0.0618
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oi83l"]
+as_normal_map = true
+bump_strength = 23.5
+noise = SubResource("FastNoiseLite_5rbfq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qv1j"]
+albedo_color = Color(0.0935996, 0.359171, 0.702151, 1)
+albedo_texture = SubResource("AnimatedTexture_egmbt")
+metallic = 0.08
+metallic_specular = 0.2
+normal_enabled = true
+normal_scale = 3.33067e-16
+normal_texture = SubResource("NoiseTexture2D_oi83l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uig51"]
+uv2_padding = 2.45
+size = Vector2(30, 30)
+subdivide_depth = 30
+
+[sub_resource type="Gradient" id="Gradient_myybc"]
+offsets = PackedFloat32Array(0.514768, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fbitf"]
+seed = 20
+frequency = 0.0159
+offset = Vector3(2.08167e-14, 2.08167e-14, 2.08167e-14)
+fractal_type = 2
+fractal_octaves = 1
+fractal_lacunarity = 1.89
+fractal_gain = 1.08
+fractal_weighted_strength = 1.0
+domain_warp_amplitude = 28.7
+domain_warp_frequency = 0.01
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_lacunarity = 5.89
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8jrec"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.0
+as_normal_map = true
+bump_strength = 53.0
+color_ramp = SubResource("Gradient_myybc")
+noise = SubResource("FastNoiseLite_fbitf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqeny"]
+albedo_color = Color(0.401748, 0.243382, 0.202901, 1)
+metallic_specular = 0.24
+roughness_texture = SubResource("NoiseTexture2D_8jrec")
+roughness_texture_channel = 2
+normal_scale = 5.52
+heightmap_scale = 6.19
+subsurf_scatter_strength = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ttr31"]
+material = SubResource("StandardMaterial3D_xqeny")
+height = 0.403
+radial_segments = 6
+rings = 0
+cap_bottom = false
+
+[node name="Game" type="Node"]
+
+[node name="Services" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Services"]
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="Scene" type="Node3D" parent="World3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World3D/Scene"]
+environment = SubResource("Environment_rgouf")
+camera_attributes = SubResource("CameraAttributesPractical_ed31u")
+
+[node name="overhead" type="DirectionalLight3D" parent="World3D/Scene/WorldEnvironment"]
+transform = Transform3D(-0.391652, -0.836611, -0.383002, 0.792672, -0.518146, 0.32124, -0.467204, -0.17778, 0.866092, 10.5567, 20.1427, 66.7191)
+light_energy = 5.611
+light_indirect_energy = 4.003
+light_volumetric_fog_energy = 2.812
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.162
+directional_shadow_fade_start = 0.59
+directional_shadow_max_distance = 30.9
+directional_shadow_pancake_size = 12.8
+
+[node name="omni color" type="OmniLight3D" parent="World3D/Scene/WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.242599, 0.970127, 0, -0.970127, -0.242599, 0, 8.89351, 0)
+light_energy = 0.0
+light_indirect_energy = 0.111
+shadow_enabled = true
+shadow_transmittance_bias = 1.52
+omni_range = 25.171
+omni_attenuation = -1.343
+
+[node name="directional_glow" type="DirectionalLight3D" parent="World3D/Scene/WorldEnvironment"]
+transform = Transform3D(0.437238, -0.486033, -0.7567, 0.878326, 0.411619, 0.243131, 0.193303, -0.770935, 0.606872, -7.03881, 8.14783, 7.63566)
+light_energy = 1.76
+light_indirect_energy = 1.57
+light_volumetric_fog_energy = 0.67
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_split_2 = 0.0
+directional_shadow_split_3 = 0.0
+directional_shadow_fade_start = 0.0
+directional_shadow_max_distance = 0.0
+directional_shadow_pancake_size = 0.0
+sky_mode = 1
+
+[node name="swap water" type="MeshInstance3D" parent="World3D/Scene"]
+transform = Transform3D(4, 0, 0, 0, 0.999296, -0.149993, 0, 0.0374983, 3.99719, 0.75553, 0.313933, -18.0965)
+material_override = SubResource("StandardMaterial3D_7qv1j")
+mesh = SubResource("PlaneMesh_uig51")
+
+[node name="hexes" type="Node3D" parent="World3D/Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00226057, 0.0771828, 0)
+
+[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="hexes2" type="Node3D" parent="World3D/Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, 0.0771828, 2.1667)
+
+[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="CharacterBody3D" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
+
+[node name="CharacterBody3D2" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.90849, 1.17472, -0.186861)
+
+[node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
+transform = Transform3D(1, 0, 0, 0, 0.983991, 0.178218, 0, -0.178218, 0.983991, 0, 1.80266, 3.52637)
+
+[node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.200213, -0.714934)
+visible = false
+use_collision = true
+size = Vector3(8.60828, 0.1, 6.8446)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_dnn8v")]

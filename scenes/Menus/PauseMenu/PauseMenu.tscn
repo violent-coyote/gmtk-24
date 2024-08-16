@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmsjsyiccm7jm"]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/extras/scenes/PauseMenu/PauseMenu.tscn" id="1_ebmg5"]
+[ext_resource type="Script" path="res://scenes/Menus/PauseMenu/PauseMenu.gd" id="2_song2"]
+[ext_resource type="PackedScene" path="res://scenes/Menus/OptionsMenu/MiniOptionsMenuWithReset.tscn" id="3_1fe1a"]
+
+[node name="PauseMenu" instance=ExtResource("1_ebmg5")]
+script = ExtResource("2_song2")
+options_packed_scene = ExtResource("3_1fe1a")
+main_menu_scene = "res://scenes/Menus/MainMenu/MainMenuWithAnimations.tscn"
