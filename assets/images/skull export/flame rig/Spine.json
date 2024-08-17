@@ -1,0 +1,34 @@
+{"skeleton":{"images":""},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"right leg","bone":"root","attachment":"right leg"},
+	{"name":"left leg","bone":"root","attachment":"left leg"},
+	{"name":"body","bone":"root","attachment":"body"},
+	{"name":"left eye","bone":"root","attachment":"left eye"},
+	{"name":"right eye","bone":"root","attachment":"right eye"},
+	{"name":"flame hair","bone":"root","attachment":"flame hair"},
+	{"name":"right claw","bone":"root","attachment":"right claw"},
+	{"name":"left claw","bone":"root","attachment":"left claw"},
+	{"name":"sad mouth","bone":"root","attachment":"sad mouth"},
+	{"name":"happy mouth","bone":"root","attachment":"happy mouth"},
+	{"name":"idle mouth","bone":"root","attachment":"idle mouth"},
+	{"name":"flame_rig","bone":"root","attachment":"flame_rig"}
+],
+"skins":{
+	"default":{
+		"right leg":{"right leg":{"x":290,"y":169.5,"width":66,"height":87}},
+		"left leg":{"left leg":{"x":202,"y":165.5,"width":68,"height":89}},
+		"body":{"body":{"x":244,"y":257.5,"width":208,"height":131}},
+		"left eye":{"left eye":{"x":191,"y":242.5,"width":60,"height":41}},
+		"right eye":{"right eye":{"x":280.5,"y":256.5,"width":51,"height":47}},
+		"flame hair":{"flame hair":{"x":240,"y":345,"width":144,"height":132}},
+		"right claw":{"right claw":{"x":388.5,"y":227.5,"width":119,"height":107}},
+		"left claw":{"left claw":{"x":97,"y":204,"width":118,"height":102}},
+		"sad mouth":{"sad mouth":{"x":240,"y":218,"width":62,"height":22}},
+		"happy mouth":{"happy mouth":{"x":238,"y":219,"width":80,"height":28}},
+		"idle mouth":{"idle mouth":{"x":242,"y":220,"width":80,"height":10}},
+		"flame_rig":{"flame_rig":{"x":256,"y":256,"width":512,"height":512}}
+	}
+},
+"animations":{"animation":{}}
+}
