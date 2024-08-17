@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Unit
 
+
+# Signals
+signal unit_clicked
+
 # State Machine
 var current_state: State
 
@@ -10,11 +14,26 @@ var move_state: MoveState
 var kiss_state: KissState
 
 var busy := false
-@onready var love_fx = $LoveParticles3D
-# interactions
-# stub toe on rocks
-# kiss if collide with another player
 
+
+# Onready
+@onready var love_fx = $LoveParticles3D
+@onready var collision_shape : CollisionShape3D = $CollisionShape3D  # Adjust the path if necessary
+
+# interactions:
+# stub toe on rocks (collide with object)
+# kiss (collide with other unit)
+# react to player (clicked on)
+var personality_data = {
+	"name" : "",
+	"stats": {
+		# [-1 to 1]
+		"health": 0,
+		"hunger": 0,
+		"social": 0,
+		"happiness": 0
+	}
+}
 
 
 func _ready():
@@ -24,6 +43,7 @@ func _ready():
 	
 	current_state = idle_state
 	current_state.enter()
+	collision_shape.input_ray_pickable = true
 
 func _process(delta):
 	# Apply gravity
