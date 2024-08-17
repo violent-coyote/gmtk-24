@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpr8qt3bd1qn6"]
+[gd_scene load_steps=17 format=3 uid="uid://bpr8qt3bd1qn6"]
 
 [ext_resource type="PackedScene" uid="uid://g1k0r4b27opx" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_s3j6w"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_nfqgk"]
+[ext_resource type="PackedScene" uid="uid://dc4gwxaiurd5d" path="res://scenes/GameScene/Game/pb_test.tscn" id="3_vho0x"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -361,18 +362,38 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="BackgroundMusicPlayer" parent="." index="3"]
-bus = &"Master"
-
 [node name="VersionNameLabel" parent="." index="5"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
 modulate = Color(1, 1, 1, 0)
+text = "trait tycoon"
 
 [node name="SubTitle" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
 modulate = Color(1, 1, 1, 0)
 
+[node name="MenuMargin" parent="MenuContainer/VBoxContainer" index="1"]
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
 [node name="MenuButtons" parent="MenuContainer/VBoxContainer/MenuMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+size_flags_horizontal = 8
 lock = true
+
+[node name="PlayButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="0"]
+text = "play"
+
+[node name="OptionsButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="1"]
+text = "options
+"
+
+[node name="CreditsButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="2"]
+text = "credits"
+
+[node name="ExitButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="3"]
+text = "exit"
+
+[node name="Node3D" type="Node3D" parent="." index="10"]
+
+[node name="Scene" parent="Node3D" index="0" instance=ExtResource("3_vho0x")]

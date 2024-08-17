@@ -11,6 +11,8 @@ class_name GameStateMachine
 const MAX_UNITS = 5
 var currently_spawned_units : Array[Unit]= []
 
+@onready var stateful_objectives = UGC.list_of_objectives.duplicate()
+
 # add button
 
 func _ready():
@@ -18,20 +20,33 @@ func _ready():
 
 	game_ui.add_button.pressed.connect(instantiate_unit)
 	game_ui.update_all_labels()
+	instantiate_unit()
 
-func check_objective_completion():
-	for i in range(UGC.list_of_objectives.size()):
-		var unit = _check_specific_objective_completion(i)
-		if unit:
-			unit.queue_free()
+func check_objective_completion() -> Array[Unit]:
+	var units : Array[Unit]= []
+	for i in range(stateful_objectives.size()-1):
+		if stateful_objectives[i]["completed"] == false:
+			var unit = _check_specific_objective_completion(i)
+			if unit != null:
+				units.append(unit)
+
+	# removing units from list during for loop not supported?
+	# if units[0]:
+		# currently_spawned_units.erase(unit)
+		# unit.queue_free()
+	return units
+	
 
 func _check_specific_objective_completion(objective_index : int) -> Unit:
 	# each objective has a type, trait, and target value
 	# look through the list of units, and check if the objective is complete by finding untis of that type, and checking that trait's value
-	var objectives = UGC.list_of_objectives[objective_index]["objective"]
+	var objective = stateful_objectives[objective_index]["objective"]
 	for unit in currently_spawned_units:
-		if unit.personality_data["unit_type"] == objectives["unit_type"]:
-			if unit.personality_data["stats"][objectives["trait"]] >= objectives["target"]:
+		if unit.personality_data["unit_type"] == objective["unit_type"]:
+			if unit.personality_data["stats"][objective["trait"]] >= objective["target"]:
+				print("Objective complete!")
+				game_ui.objective_to_label(objective_index).text = "Objective Complete!"
+				stateful_objectives[objective_index]["completed"] = true
 				return unit
 	return null
 
@@ -41,10 +56,10 @@ func affect_all_unit_event(trait_affected : UGC.StatPrimitives, amount : float):
 		unit.personality_data["stats"][trait_affected] += amount
 
 func instantiate_unit():
-	if currently_spawned_units.size() > MAX_UNITS:
+	if currently_spawned_units.size() >= MAX_UNITS:
 		print("Can't spawn more units! At limit: " + str(MAX_UNITS))
 		return
 	var unit = unit_base.instantiate()
 	game_scene.add_child(unit)
-	unit.global_transform.origin = Vector3(0, 4, 0)
+	unit.global_transform.origin = Vector3(0, randi_range(3,6), 0)
 	currently_spawned_units.append(unit)

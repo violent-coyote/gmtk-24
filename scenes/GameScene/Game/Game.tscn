@@ -273,11 +273,8 @@ directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 0.0
 directional_shadow_pancake_size = 0.0
 
-[node name="CharacterBody3D" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774417, 1.17472, 1.47552)
-
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(-1, 1.56314e-08, -8.60139e-08, -1.21986e-08, 0.94931, 0.31434, 8.65675e-08, 0.31434, -0.94931, -0.171505, 1.80266, -3.84872)
+transform = Transform3D(-1, 1.56314e-08, -8.60139e-08, -2.04114e-08, 0.914946, 0.403577, 8.50065e-08, 0.403577, -0.914946, -0.171505, 1.80266, -4.12257)
 script = ExtResource("3_fyrwg")
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
@@ -446,7 +443,7 @@ mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("")
 
 [node name="hexes2" type="Node3D" parent="World3D/Scene/Hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, 0.0717779, 2.1667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, -0.0161006, 2.1667)
 
 [node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
 mesh = SubResource("CylinderMesh_ttr31")

@@ -36,7 +36,7 @@ static var list_of_names = [
 	"Catlady",
 	"Small Potatoes"
 ]
-
+## FIXME this should be a stateful list where it checks if the objective is complete
 static var list_of_objectives = [
 	{
 		"description": "1 healthy onion, please",
@@ -45,7 +45,8 @@ static var list_of_objectives = [
 				"unit_type" : UnitTypes.ONION,
 				"trait": StatPrimitives.HEALTH,
 				"target": 0.8
-			}
+			},
+		"completed": false
 		
 	},
 	{
@@ -55,7 +56,8 @@ static var list_of_objectives = [
 				"unit_type" : UnitTypes.CAT,
 				"trait": StatPrimitives.SOCIAL,
 				"target": 0.8
-			}
+			},
+		"completed": false
 		
 	},
 	{
@@ -64,8 +66,9 @@ static var list_of_objectives = [
 			{
 				"unit_type" : UnitTypes.CRAB,
 				"trait": StatPrimitives.HUNGER,
-				"target": 0.8
-			}
+				"target": 0.4
+			},
+		"completed": false
 		
 	},
 	{
@@ -75,7 +78,8 @@ static var list_of_objectives = [
 				"unit_type" : UnitTypes.CRAB,
 				"trait": StatPrimitives.SOCIAL,
 				"target": 0.8
-			}
+			},
+		"completed": false
 		
 	},
 	{
@@ -85,7 +89,8 @@ static var list_of_objectives = [
 				"unit_type" : UnitTypes.CRAB,
 				"trait": StatPrimitives.HEALTH,
 				"target": 0.8
-			}
+			},
+		"completed": false
 		
 	}
 ]

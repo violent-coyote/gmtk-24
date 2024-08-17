@@ -40,6 +40,7 @@ var personality_data = {
 }
 
 
+
 func _ready():
 	randomize()
 	idle_state = IdleState.new(self)
@@ -119,7 +120,15 @@ func add_unit_type_bias():
 	if unit_type == UGC.UnitTypes.CRAB:
 		stats[UGC.StatPrimitives.HUNGER] = 0.8
 
-	print(stats)
+
+## adjust stat function
+func adjust_stat(stat: UGC.StatPrimitives, amount: float):
+	personality_data["stats"][stat] += amount
+	# clamp to -1 to 1
+	if personality_data["stats"][stat] > 1:
+		personality_data["stats"][stat] = 1
+	elif personality_data["stats"][stat] < -1:
+		personality_data["stats"][stat] = -1
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
@@ -214,9 +223,15 @@ class KissState extends State:
 
 	func enter():
 		unit.velocity = Vector3.ZERO
+		unit.busy = true
 		# print("Entering Kiss State")
 		unit.love_fx.emitting = true
 		unit.spine_sprite.get_animation_state().set_animation("happy",true,0)
+		# adjust stat for happiness by + 0.1
+		# adjust stat for social by + 0.2
+		unit.adjust_stat(UGC.StatPrimitives.HAPPINESS, 0.1)
+		unit.adjust_stat(UGC.StatPrimitives.SOCIAL, 0.2)
+
 
 	func exit():
 		kiss_timer = 0.0
