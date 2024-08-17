@@ -1,8 +1,13 @@
-[gd_scene load_steps=47 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=54 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
 [ext_resource type="Script" path="res://scenes/GameScene/Game/flamecrab.gd" id="4_lv8lc"]
+[ext_resource type="Texture2D" uid="uid://dbbit8u7qfvfv" path="res://assets/images/pyramid.png" id="5_val8w"]
+[ext_resource type="PackedScene" uid="uid://caxmlv1tah0p6" path="res://assets/images/palm.glb" id="6_q2fpy"]
+[ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
+[ext_resource type="PackedScene" uid="uid://s2advrvqm1yu" path="res://assets/images/cloud.glb" id="8_byqvp"]
+[ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
 [ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
@@ -145,9 +150,9 @@ noise = SubResource("FastNoiseLite_5rbfq")
 albedo_color = Color(0.0935996, 0.359171, 0.702151, 1)
 albedo_texture = SubResource("AnimatedTexture_egmbt")
 metallic = 0.08
-metallic_specular = 0.2
+metallic_specular = 0.1
 normal_enabled = true
-normal_scale = 3.33067e-16
+normal_scale = -0.2
 normal_texture = SubResource("NoiseTexture2D_oi83l")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uig51"]
@@ -289,7 +294,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-[sub_resource type="Animation" id="Animation_egocw"]
+[sub_resource type="Animation" id="Animation_ypnbg"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -317,10 +322,9 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_7tb00"]
+[sub_resource type="Animation" id="Animation_3317n"]
 resource_name = "happy"
 length = 0.3
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -340,13 +344,13 @@ tracks/1/path = NodePath(".:loop")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0023),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_rk10k"]
+[sub_resource type="Animation" id="Animation_gw8mc"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -374,7 +378,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_r0h37"]
+[sub_resource type="Animation" id="Animation_hd15y"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -402,7 +406,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_vbbnd"]
+[sub_resource type="Animation" id="Animation_qntql"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -430,15 +434,29 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bim3x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tonbt"]
 _data = {
-"-- Empty --": SubResource("Animation_vbbnd"),
-"RESET": SubResource("Animation_vbbnd"),
-"happy": SubResource("Animation_7tb00"),
-"happy_looped": SubResource("Animation_egocw"),
-"sad": SubResource("Animation_r0h37"),
-"sad_looped": SubResource("Animation_rk10k")
+"-- Empty --": SubResource("Animation_qntql"),
+"RESET": SubResource("Animation_qntql"),
+"happy": SubResource("Animation_3317n"),
+"happy_looped": SubResource("Animation_ypnbg"),
+"sad": SubResource("Animation_hd15y"),
+"sad_looped": SubResource("Animation_gw8mc")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("5_val8w")
+uv1_scale = Vector3(1.57, 1.57, 1.57)
+uv1_offset = Vector3(0.12, 0.01, 0.76)
+disable_receive_shadows = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_id68b"]
+lightmap_size_hint = Vector2i(11, 18)
+size = Vector3(10, 10, 0.53)
 
 [node name="Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
@@ -465,26 +483,25 @@ light_energy = 0.0
 light_indirect_energy = 0.111
 shadow_enabled = true
 shadow_transmittance_bias = 1.52
-omni_range = 25.171
-omni_attenuation = -1.343
+omni_range = 2.044
+omni_attenuation = -6.5
 
 [node name="directional_glow" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.437238, -0.486033, -0.7567, 0.878326, 0.411619, 0.243131, 0.193303, -0.770935, 0.606872, -7.03881, 8.14783, 7.63566)
-light_energy = 1.76
-light_indirect_energy = 1.57
-light_volumetric_fog_energy = 0.67
+light_energy = 0.251
+light_indirect_energy = 1.51
+light_volumetric_fog_energy = 0.61
 shadow_enabled = true
-directional_shadow_mode = 0
 directional_shadow_split_2 = 0.0
 directional_shadow_split_3 = 0.0
 directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 0.0
 directional_shadow_pancake_size = 0.0
-sky_mode = 1
 
 [node name="swap water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.91, 0.00267387, 0.00181503, -0.00267377, 1.91, -0.000111141, -0.00181518, 0.000108605, 1.91, 0.75553, -0.12273, 2.17568)
 material_override = SubResource("StandardMaterial3D_7qv1j")
+transparency = 1.0
 mesh = SubResource("PlaneMesh_uig51")
 
 [node name="Dirt hexes" type="Node3D" parent="."]
@@ -634,6 +651,7 @@ position = Vector2(511, 452)
 scale = Vector2(3.21, 3.21)
 skeleton_data_res = ExtResource("2_s0kfq")
 root = true
+root_color = Color(0.373693, 1, 0.842824, 1)
 bones = true
 preview_skin = "default"
 preview_animation = "animation"
@@ -655,7 +673,10 @@ rotation = 0.0820305
 skew = 0.235619
 skeleton_data_res = ExtResource("3_e0xkx")
 root = true
+root_color = Color(0.865294, 0.786087, 0.968985, 1)
 bones = true
+bones_color = Color(0.538363, 0.882868, 1, 1)
+bones_thickness = 8.15
 preview_skin = "default"
 preview_animation = "sad"
 preview_frame = false
@@ -667,5 +688,23 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_bim3x")
+"": SubResource("AnimationLibrary_tonbt")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.655944, 0, 0, 0, 1, -0.905, 2.76767, 19.1673)
+material_override = SubResource("StandardMaterial3D_edwd0")
+mesh = SubResource("PrismMesh_id68b")
+skeleton = NodePath("../flame crab/SubViewport/SpineSprite/SpineAnimationTrack/SpineSprite Track 0")
+
+[node name="palm2" parent="." instance=ExtResource("6_q2fpy")]
+transform = Transform3D(0.291201, 0, 4.7611, 0, 4.77, 0, -4.7611, 0, 0.291201, 6.31571, -0.0252856, 6.22998)
+
+[node name="bush" parent="." instance=ExtResource("7_5ps67")]
+transform = Transform3D(2.41411, 0, 1.53352, 0, 2.86, 0, -1.53352, 0, 2.41411, 2.55017, -0.113317, 5.36978)
+
+[node name="cloud2" parent="." instance=ExtResource("8_byqvp")]
+transform = Transform3D(0.955256, 0, -8.60715, 0, 8.66, 0, 8.60715, 0, 0.955256, 3.59506, 5.955, 26.5729)
+
+[node name="purplegrass" parent="." instance=ExtResource("9_vjpqo")]
+transform = Transform3D(-1.28943, 0, 3.15681, 0, 3.41, 0, -3.15681, 0, -1.28943, 4.11276, 0.406381, 7.88553)

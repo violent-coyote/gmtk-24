@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://d13qpx5lxti1p"]
+
+[ext_resource type="PackedScene" uid="uid://gfa322km0uck" path="res://assets/images/bush.glb" id="1_at8u0"]
+[ext_resource type="Texture2D" uid="uid://bknslfhrq0ihy" path="res://assets/images/bush_greengrass.png" id="2_hc1lp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v20f4"]
+resource_name = "greengrass"
+transparency = 2
+alpha_scissor_threshold = 0.2
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
+cull_mode = 2
+albedo_texture = ExtResource("2_hc1lp")
+metallic_specular = 0.0
+detail_blend_mode = 1
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nqff7"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.0291331, -0.658153, 1, 0.0722209, 0.997389),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "greengrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_epn2n"]
+resource_name = "bush_greengrass"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.0291331, -0.658153, 1, 0.0722209, 0.997389),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_v20f4"),
+"name": "greengrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 13, 189, 255, 255, 0, 0, 255, 255, 13, 189, 0, 0, 255, 255, 0, 0, 13, 189, 255, 255, 255, 255, 0, 0, 13, 189, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nqff7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivr5p"]
+resource_name = "greengrass"
+transparency = 2
+alpha_scissor_threshold = 0.091
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.28
+cull_mode = 2
+albedo_texture = ExtResource("2_hc1lp")
+metallic_specular = 0.0
+heightmap_scale = -14.382
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+heightmap_flip_texture = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_l2dnr"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.0291331, -0.658153, 1, 0.0722209, 0.997389),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "greengrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t8bci"]
+resource_name = "bush_greengrass_001"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.0291331, -0.658153, 1, 0.0722209, 0.997389),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_ivr5p"),
+"name": "greengrass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 13, 189, 255, 255, 0, 0, 255, 255, 13, 189, 0, 0, 255, 255, 0, 0, 13, 189, 255, 255, 255, 255, 0, 0, 13, 189, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_l2dnr")
+
+[node name="bush" instance=ExtResource("1_at8u0")]
+
+[node name="greengrass" parent="." index="0"]
+mesh = SubResource("ArrayMesh_epn2n")
+
+[node name="greengrass_001" parent="." index="1"]
+mesh = SubResource("ArrayMesh_t8bci")
