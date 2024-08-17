@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bid27wf21e2o8"]
+[gd_scene load_steps=9 format=3 uid="uid://bid27wf21e2o8"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_jjtcj"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/PauseMenuController.gd" id="4_tjl81"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/MusicPlayers/BackgroundMusicPlayer.tscn" id="7_8fg1h"]
 [ext_resource type="PackedScene" uid="uid://cd0jbh4metflb" path="res://addons/maaacks_game_template/base/scenes/LoadingScreen/LoadingScreen.tscn" id="8_drvwh"]
 [ext_resource type="Script" path="res://scenes/GameScene/InputDisplayLabel.gd" id="10_dtnuc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmtuh"]
+bg_color = Color(0.550958, 0.550959, 0.550958, 0.768627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3j6i"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -73,38 +79,56 @@ grow_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Container/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmtuh")
 
 [node name="Label" type="Label" parent="Container/VBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "jerry fell in love"
+label_settings = SubResource("LabelSettings_n3j6i")
 
 [node name="PanelContainer2" type="PanelContainer" parent="Container/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmtuh")
 
 [node name="Label" type="Label" parent="Container/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 text = "jerry fell in love"
+label_settings = SubResource("LabelSettings_n3j6i")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Container/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmtuh")
 
 [node name="Label" type="Label" parent="Container/VBoxContainer/PanelContainer3"]
 layout_mode = 2
 text = "jerry fell in love"
+label_settings = SubResource("LabelSettings_n3j6i")
 
 [node name="PanelContainer4" type="PanelContainer" parent="Container/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmtuh")
 
 [node name="Label" type="Label" parent="Container/VBoxContainer/PanelContainer4"]
 layout_mode = 2
 text = "jerry fell in love"
+label_settings = SubResource("LabelSettings_n3j6i")
 
 [node name="PanelContainer5" type="PanelContainer" parent="Container/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmtuh")
 
 [node name="Label" type="Label" parent="Container/VBoxContainer/PanelContainer5"]
 layout_mode = 2
 text = "jerry fell in love"
+label_settings = SubResource("LabelSettings_n3j6i")
+
+[node name="SubmitButton" type="Button" parent="Container"]
+layout_mode = 1
+offset_left = 843.0
+offset_top = 149.0
+offset_right = 1104.0
+offset_bottom = 180.0
+text = "\"say bye to units forever\" button"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container"]
 layout_mode = 1
@@ -119,39 +143,39 @@ grow_vertical = 0
 [node name="Button" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "a"
+text = "throw rock"
 
 [node name="Button2" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "b"
+text = "throw skull"
 
 [node name="Button3" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "c"
+text = "make it rain"
 
 [node name="Button4" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "d"
+text = "make it reign"
 
 [node name="Button5" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "e"
+text = "optional"
 
 [node name="Button6" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "f"
+text = "party time"
 
 [node name="Button7" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "g"
+text = "drama"
 
 [node name="Button8" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "h"
+text = "new album"

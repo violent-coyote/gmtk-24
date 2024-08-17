@@ -3,7 +3,7 @@ class_name Unit
 
 
 ## Signals
-signal unit_clicked(unit: Unit)
+signal unit_clicked()
 
 ## State Machine
 var current_state: State
@@ -53,6 +53,7 @@ func _ready():
 
 	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
 
+	unit_clicked.connect(pretty_print_personality)
 	randomize_personality()
 
 	# var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
@@ -82,11 +83,30 @@ func randomize_personality():
 	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
 
 	# Randomize stats
-	for stat in UGC.StatPrimitives:
+	for stat in UGC.StatPrimitives.values():
 		personality_data["stats"][stat] = randf_range(-1, 1)
 
+	add_unit_type_bias()
+
+func pretty_print_personality():
+	print("Name: ", personality_data["name"])
+	print("Type: ", personality_data["unit_type"])
+	print("Stats: ")
+	for stat in UGC.StatPrimitives.values():
+		print(pretty_print_trait_to_string(stat), ": ", personality_data["stats"][stat])
 
 
+func pretty_print_trait_to_string(unit_trait: UGC.StatPrimitives):
+	match unit_trait:
+		UGC.StatPrimitives.HEALTH:
+			return "Health"
+		UGC.StatPrimitives.HUNGER:
+			return "Hunger"
+		UGC.StatPrimitives.SOCIAL:
+			return "Social"
+		UGC.StatPrimitives.HAPPINESS:
+			return "Happiness"
+		
 ## implement unit type bias - cats are social, onions are healthy, and crabs are hungry
 func add_unit_type_bias():
 	var unit_type = personality_data["unit_type"]
@@ -94,12 +114,12 @@ func add_unit_type_bias():
 
 	if unit_type == UGC.UnitTypes.CAT:
 		stats[UGC.StatPrimitives.SOCIAL] = 0.8
-	elif personality_data["unit_type"] == UGC.UnitTypes.ONION:
+	if unit_type == UGC.UnitTypes.ONION:
 		stats[UGC.StatPrimitives.HEALTH] = 0.8
-		pass
-	elif personality_data["unit_type"] == UGC.UnitTypes.CRAB:
+	if unit_type == UGC.UnitTypes.CRAB:
 		stats[UGC.StatPrimitives.HUNGER] = 0.8
-		pass
+
+	print(stats)
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
@@ -219,5 +239,5 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 	# print("Input event received on ", name)  # Debug print
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("Clicked on Unit: ", name, " at position: ", position)
-		unit_clicked.emit(self)
+		unit_clicked.emit()
 # endregion

@@ -34,7 +34,7 @@ skeleton_file_res = ExtResource("3_t6hkd")
 default_mix = 0.1
 animation_mixes = [SubResource("SpineAnimationMix_bahkd"), SubResource("SpineAnimationMix_1l6k8")]
 
-[sub_resource type="Animation" id="Animation_4cycv"]
+[sub_resource type="Animation" id="Animation_eic16"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -62,7 +62,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_nlu07"]
+[sub_resource type="Animation" id="Animation_gmht5"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -90,7 +90,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_1qvm8"]
+[sub_resource type="Animation" id="Animation_cvhlq"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -118,7 +118,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_f178f"]
+[sub_resource type="Animation" id="Animation_hswg6"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -146,7 +146,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_xeauk"]
+[sub_resource type="Animation" id="Animation_0i345"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -174,18 +174,18 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tk52g"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xain"]
 _data = {
-"-- Empty --": SubResource("Animation_xeauk"),
-"RESET": SubResource("Animation_xeauk"),
-"happy": SubResource("Animation_nlu07"),
-"happy_looped": SubResource("Animation_4cycv"),
-"sad": SubResource("Animation_f178f"),
-"sad_looped": SubResource("Animation_1qvm8")
+"-- Empty --": SubResource("Animation_0i345"),
+"RESET": SubResource("Animation_0i345"),
+"happy": SubResource("Animation_gmht5"),
+"happy_looped": SubResource("Animation_eic16"),
+"sad": SubResource("Animation_hswg6"),
+"sad_looped": SubResource("Animation_cvhlq")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fbe5"]
-size = Vector3(1, 1.22876, 0.380722)
+size = Vector3(0.411865, 0.587219, 0.380722)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p5htl"]
 emission_shape_scale = Vector3(0.1, 0.1, 0.1)
@@ -246,11 +246,11 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="SpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_tk52g")
+"": SubResource("AnimationLibrary_0xain")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11438, -0.127708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123291, -0.237579, -0.127708)
 shape = SubResource("BoxShape3D_7fbe5")
 
 [node name="LoveParticles3D" type="GPUParticles3D" parent="."]

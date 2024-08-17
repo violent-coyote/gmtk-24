@@ -281,7 +281,7 @@ transform = Transform3D(-1, 1.56314e-08, -8.60139e-08, -1.21986e-08, 0.94931, 0.
 script = ExtResource("3_fyrwg")
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.0370717, -0.714934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.151245, -0.714934)
 visible = false
 use_collision = true
 size = Vector3(8.60828, 0.1, 6.8446)
@@ -332,6 +332,71 @@ skeleton = NodePath("")
 
 [node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt12" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26467, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt15" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36203, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt16" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -1.52808)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt17" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -0.0442742)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt18" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt21" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83012, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt22" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0545537, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt23" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0545537, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt24" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924074, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt25" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80378, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt26" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23945, -0.0020175, -2.25118)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt13" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500132, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt14" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389211, -0.0020175, -2.24901)
 mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("")
 

@@ -37,10 +37,56 @@ static var list_of_names = [
 	"Small Potatoes"
 ]
 
-static var values_to_effects = [
+static var list_of_objectives = [
 	{
-
+		"description": "1 healthy onion, please",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.ONION,
+				"trait": StatPrimitives.HEALTH,
+				"target": 0.8
+			}
+		
 	},
-
+	{
+		"description": "I need a chatty cat",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CAT,
+				"trait": StatPrimitives.SOCIAL,
+				"target": 0.8
+			}
+		
+	},
+	{
+		"description": "Hungry Crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.HUNGER,
+				"target": 0.8
+			}
+		
+	},
+	{
+		"description" : "Chatty crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.SOCIAL,
+				"target": 0.8
+			}
+		
+	},
+	{
+		"description" : "Healthy Crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.HEALTH,
+				"target": 0.8
+			}
+		
+	}
 ]
 
