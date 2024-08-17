@@ -262,4 +262,3 @@ process_material = SubResource("ParticleProcessMaterial_p5htl")
 draw_pass_1 = SubResource("TextMesh_035po")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
