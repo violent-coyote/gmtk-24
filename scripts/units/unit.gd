@@ -50,13 +50,15 @@ func _ready():
 	input_ray_pickable = true
 
 	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
-	var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
+
+
+	# var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
 	# var spine_skin := skeleton.get_skin()
 	# spine_skin.
 	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
 	# skeleton.get_root_bone().set_scale_x(MAX_SCALE)
 	# skeleton.get_root_bone().set_scale_y(MAX_SCALE)
-	scale_slot("flame hair", MAX_SCALE)
+	# scale_slot("flame hair", MAX_SCALE)
 
 
 func _process(delta):
@@ -186,10 +188,7 @@ class KissState extends State:
 
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	print("Input event received on ", name)  # Debug print
+	# print("Input event received on ", name)  # Debug print
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("Clicked on Unit: ", name, " at position: ", position)
 		unit_clicked.emit(self)
-
-func _on_mouse_entered():
-	print("Mouse entered ", name)  # Debug print
