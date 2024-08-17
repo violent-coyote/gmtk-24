@@ -1,12 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://daix2ixjp0erh"]
+[gd_scene load_steps=20 format=3 uid="uid://daix2ixjp0erh"]
 
 [ext_resource type="Script" path="res://scripts/units/unit.gd" id="1_1lbcc"]
 [ext_resource type="SpineAtlasResource" uid="uid://dt4ifanypyhyl" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.atlas" id="2_cv1s8"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://bwdr7lvojww32" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.skel" id="3_t6hkd"]
-[ext_resource type="Script" path="res://scenes/GameScene/Game/flamecrab.gd" id="4_gdhc5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ss718"]
-viewport_path = NodePath("flame crab/SubViewport")
+viewport_path = NodePath("SpineSprite3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0wdd"]
 resource_local_to_scene = true
@@ -220,17 +219,17 @@ font_size = 24
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17472, -0.186861)
 script = ExtResource("1_1lbcc")
 
-[node name="flame crab" type="MeshInstance3D" parent="."]
+[node name="SpineSprite3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.27, 0, -1.9845e-07, 0, 2.27, 0, 1.9845e-07, 0, -2.27, 0.583213, -0.120144, 0)
 material_override = SubResource("StandardMaterial3D_d0wdd")
 mesh = SubResource("QuadMesh_3hi15")
 skeleton = NodePath("")
 
-[node name="SubViewport" type="SubViewport" parent="flame crab"]
+[node name="SubViewport" type="SubViewport" parent="SpineSprite3D"]
 transparent_bg = true
 size = Vector2i(872, 732)
 
-[node name="SpineSprite" type="SpineSprite" parent="flame crab/SubViewport"]
+[node name="SpineSprite" type="SpineSprite" parent="SpineSprite3D/SubViewport"]
 position = Vector2(626, 494)
 rotation = 0.0820305
 skew = 0.235619
@@ -241,12 +240,11 @@ preview_skin = "default"
 preview_animation = "sad"
 preview_frame = false
 preview_time = 0.0
-script = ExtResource("4_gdhc5")
 
-[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="flame crab/SubViewport/SpineSprite"]
+[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="SpineSprite3D/SubViewport/SpineSprite"]
 track_index = 0
 
-[node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
+[node name="SpineSprite Track 0" type="AnimationPlayer" parent="SpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
 "": SubResource("AnimationLibrary_wiia3")
 }

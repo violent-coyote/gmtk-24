@@ -2,13 +2,13 @@ extends CharacterBody3D
 class_name Unit
 
 
-# Signals
+## Signals
 signal unit_clicked
 
-# State Machine
+## State Machine
 var current_state: State
 
-# States
+## States
 var idle_state: IdleState
 var move_state: MoveState
 var kiss_state: KissState
@@ -16,9 +16,12 @@ var kiss_state: KissState
 var busy := false
 
 
-# Onready
+const MAX_SCALE = 15
+
+## Animations
 @onready var love_fx = $LoveParticles3D
 @onready var collision_shape : CollisionShape3D = $CollisionShape3D  # Adjust the path if necessary
+@onready var spine_sprite : SpineSprite = $SpineSprite3D/SubViewport/SpineSprite
 
 # interactions:
 # stub toe on rocks (collide with object)
@@ -46,6 +49,16 @@ func _ready():
 
 	input_ray_pickable = true
 
+	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
+	var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
+	# var spine_skin := skeleton.get_skin()
+	# spine_skin.
+	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
+	# skeleton.get_root_bone().set_scale_x(MAX_SCALE)
+	# skeleton.get_root_bone().set_scale_y(MAX_SCALE)
+	scale_slot("flame hair", MAX_SCALE)
+
+
 func _process(delta):
 	# Apply gravity
 	velocity += Vector3.DOWN * 9.8 * delta
@@ -71,6 +84,20 @@ func change_state(new_state: State):
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
+
+func scale_slot(slot_name: String, scale_factor: float):
+	var skeleton: SpineSkeleton = spine_sprite.get_skeleton()
+	var spine_skin:= skeleton.get_skin()
+	# Find the specified slot
+	if spine_skin:
+		var attachment_data := spine_skin.get_attachment(0, slot_name)
+		if attachment_data:
+			attachment_data.width *= scale_factor
+			attachment_data.height *= scale_factor
+			# attachment_data.scale_x = scale_factor
+			# attachment_data.scale_y = scale_factor
+			# skeleton.set_skin(spine_skin)
+
 
 # Base State class
 class State:
@@ -140,11 +167,13 @@ class KissState extends State:
 		unit.velocity = Vector3.ZERO
 		# print("Entering Kiss State")
 		unit.love_fx.emitting = true
+		unit.spine_sprite.get_animation_state().set_animation("happy",true,0)
 
 	func exit():
 		kiss_timer = 0.0
 		unit.busy = false
 		unit.love_fx.emitting = false
+		unit.spine_sprite.get_animation_state().set_animation("sad",true,0)
 	
 	func update(delta: float):
 		if kiss_timer < KISS_DURATION:

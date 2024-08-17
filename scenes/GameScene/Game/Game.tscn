@@ -214,7 +214,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ed31u")
 
 [node name="overhead" type="DirectionalLight3D" parent="World3D/Scene/WorldEnvironment"]
 transform = Transform3D(-0.391652, -0.836611, -0.383002, 0.792672, -0.518146, 0.32124, -0.467204, -0.17778, 0.866092, 10.5567, 20.1427, 66.7191)
-light_energy = 5.611
+light_energy = 3.463
 light_indirect_energy = 4.003
 light_volumetric_fog_energy = 2.812
 shadow_enabled = true
@@ -400,7 +400,7 @@ skeleton = NodePath("../../WorldEnvironment")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774417, 1.17472, 1.47552)
 
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(-1, 1.56314e-08, -8.6014e-08, 0, 0.983885, 0.178802, 8.74228e-08, 0.178802, -0.983885, 0, 1.80266, -4.50202)
+transform = Transform3D(-1, 1.56314e-08, -8.6014e-08, -1.21986e-08, 0.94931, 0.31434, 8.65675e-08, 0.31434, -0.94931, 0, 1.80266, -3.6786)
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.0370717, -0.714934)
