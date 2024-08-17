@@ -1,0 +1,28 @@
+Spine.png
+size:390,269
+filter:Linear,Linear
+pma:true
+body
+bounds:2,136,208,131
+flame hair
+bounds:2,2,144,132
+happy mouth
+bounds:333,187,80,28
+rotate:90
+idle mouth
+bounds:148,4,80,10
+left claw
+bounds:148,16,118,102
+rotate:90
+left eye
+bounds:252,26,60,41
+left leg
+bounds:252,69,68,89
+right claw
+bounds:212,160,119,107
+right eye
+bounds:322,22,51,47
+right leg
+bounds:322,71,66,87
+sad mouth
+bounds:252,2,62,22

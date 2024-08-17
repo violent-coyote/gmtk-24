@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://8pd03t4bx574"]
+[gd_scene load_steps=27 format=3 uid="uid://8pd03t4bx574"]
 
 [ext_resource type="PackedScene" uid="uid://daix2ixjp0erh" path="res://scenes/GameScene/Game/unit_base.tscn" id="1_ctym0"]
 [ext_resource type="PackedScene" uid="uid://bid27wf21e2o8" path="res://scenes/GameScene/GameUI.tscn" id="1_dnn8v"]
+[ext_resource type="Script" path="res://scripts/state/game_manager.gd" id="1_ik5x7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -198,9 +199,9 @@ cap_bottom = false
 
 [node name="Game" type="Node"]
 
-[node name="Services" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameManager" type="Node" parent="Services"]
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_dnn8v")]
 
 [node name="World3D" type="Node3D" parent="."]
 
@@ -247,12 +248,12 @@ directional_shadow_pancake_size = 0.0
 sky_mode = 1
 
 [node name="swap water" type="MeshInstance3D" parent="World3D/Scene"]
-transform = Transform3D(4, 0, 0, 0, 0.999296, -0.149993, 0, 0.0374983, 3.99719, 0.75553, 0.313933, -18.0965)
+transform = Transform3D(-4, -3.20349e-09, -3.49457e-07, 0, 0.999328, -0.146575, 3.49691e-07, -0.0366437, -3.99732, 0.75553, 1.75886, 48.689)
 material_override = SubResource("StandardMaterial3D_7qv1j")
 mesh = SubResource("PlaneMesh_uig51")
 
 [node name="hexes" type="Node3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00226057, 0.0771828, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00226057, -0.014471, 0)
 
 [node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes"]
 mesh = SubResource("CylinderMesh_ttr31")
@@ -324,7 +325,7 @@ mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("../../WorldEnvironment")
 
 [node name="hexes2" type="Node3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, 0.0771828, 2.1667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, 0.0717779, 2.1667)
 
 [node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
 mesh = SubResource("CylinderMesh_ttr31")
@@ -396,19 +397,19 @@ mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("../../WorldEnvironment")
 
 [node name="CharacterBody3D" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
-
-[node name="CharacterBody3D2" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.90849, 1.17472, -0.186861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774417, 1.17472, 1.47552)
 
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 0.983991, 0.178218, 0, -0.178218, 0.983991, 0, 1.80266, 3.52637)
+transform = Transform3D(-1, 1.56314e-08, -8.6014e-08, 0, 0.983885, 0.178802, 8.74228e-08, 0.178802, -0.983885, 0, 1.80266, -4.50202)
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.200213, -0.714934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.0370717, -0.714934)
 visible = false
 use_collision = true
 size = Vector3(8.60828, 0.1, 6.8446)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Services" type="Node" parent="."]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_dnn8v")]
+[node name="GameManager" type="Node" parent="Services"]
+script = ExtResource("1_ik5x7")
+unit_base = ExtResource("1_ctym0")

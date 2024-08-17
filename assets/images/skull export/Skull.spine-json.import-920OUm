@@ -1,0 +1,13 @@
+[remap]
+
+importer="spine.json"
+type="SpineSkeletonFileResource"
+uid="uid://hs8n8jbfaqbj"
+valid=false
+
+[deps]
+
+source_file="res://assets/images/skull export/Skull.spine-json"
+
+[params]
+

@@ -1,6 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=47 format=3 uid="uid://dc4gwxaiurd5d"]
 
-[ext_resource type="Texture2D" uid="uid://bxya2bueaw6va" path="res://assets/pb/spine/godotexport/Untitled.png" id="15_ee3ev"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
+[ext_resource type="Script" path="res://scenes/GameScene/Game/flamecrab.gd" id="4_lv8lc"]
+[ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
+
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -248,6 +252,195 @@ _data = {
 "stabd": SubResource("Animation_skpjh")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_mvt8b"]
+viewport_path = NodePath("spine test 1/test skull/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6bqrl"]
+viewport_path = NodePath("spine test 1/test skull/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7xls"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.02
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_mvt8b")
+metallic_specular = 0.0
+roughness = 0.0
+normal_scale = 0.44
+heightmap_scale = 16.0
+heightmap_flip_tangent = true
+heightmap_texture = SubResource("ViewportTexture_6bqrl")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_jm10o"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(7, 7)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_komru"]
+viewport_path = NodePath("flame crab/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s160"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.01
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_komru")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
+
+[sub_resource type="Animation" id="Animation_egocw"]
+resource_name = "happy_looped"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7tb00"]
+resource_name = "happy"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0023),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rk10k"]
+resource_name = "sad_looped"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r0h37"]
+resource_name = "sad"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vbbnd"]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bim3x"]
+_data = {
+"-- Empty --": SubResource("Animation_vbbnd"),
+"RESET": SubResource("Animation_vbbnd"),
+"happy": SubResource("Animation_7tb00"),
+"happy_looped": SubResource("Animation_egocw"),
+"sad": SubResource("Animation_r0h37"),
+"sad_looped": SubResource("Animation_rk10k")
+}
+
 [node name="Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
 
@@ -423,3 +616,57 @@ speed_scale = 2.005
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.43988e-08, 0.986343, 0.164703, 8.62289e-08, 0.164703, -0.986343, 0, 1.97988, -5.08361)
+
+[node name="spine test 1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278919, 0, 0)
+
+[node name="test skull" type="MeshInstance3D" parent="spine test 1"]
+transform = Transform3D(-0.992753, 0, 0.120172, 0, 1, 0, -0.120172, 0, -0.992753, -0.523335, 1.09542, -0.897053)
+material_override = SubResource("StandardMaterial3D_s7xls")
+mesh = SubResource("QuadMesh_jm10o")
+
+[node name="SubViewport" type="SubViewport" parent="spine test 1/test skull"]
+transparent_bg = true
+mesh_lod_threshold = 0.0
+size = Vector2i(1082, 802)
+
+[node name="SpineSprite" type="SpineSprite" parent="spine test 1/test skull/SubViewport"]
+position = Vector2(511, 452)
+scale = Vector2(3.21, 3.21)
+skeleton_data_res = ExtResource("2_s0kfq")
+root = true
+bones = true
+preview_skin = "default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.1
+
+[node name="flame crab" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.27, 0, 0, 0, 2.27, 0, 0, 0, 2.27, -2.01965, 2.58399, 0)
+material_override = SubResource("StandardMaterial3D_5s160")
+mesh = SubResource("QuadMesh_3hi15")
+
+[node name="SubViewport" type="SubViewport" parent="flame crab"]
+transparent_bg = true
+size = Vector2i(872, 732)
+
+[node name="SpineSprite" type="SpineSprite" parent="flame crab/SubViewport"]
+position = Vector2(626, 494)
+rotation = 0.0820305
+skew = 0.235619
+skeleton_data_res = ExtResource("3_e0xkx")
+root = true
+bones = true
+preview_skin = "default"
+preview_animation = "sad"
+preview_frame = false
+preview_time = 0.0
+script = ExtResource("4_lv8lc")
+
+[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="flame crab/SubViewport/SpineSprite"]
+track_index = 0
+
+[node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
+libraries = {
+"": SubResource("AnimationLibrary_bim3x")
+}
