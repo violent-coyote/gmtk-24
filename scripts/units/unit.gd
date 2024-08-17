@@ -4,6 +4,7 @@ class_name Unit
 
 # Signals
 signal unit_clicked
+signal unit_kissed
 
 # State Machine
 var current_state: State
@@ -43,7 +44,7 @@ func _ready():
 	
 	current_state = idle_state
 	current_state.enter()
-	collision_shape.input_ray_pickable = true
+	# collision_shape.input_ray_pickable = true
 
 func _process(delta):
 	# Apply gravity

@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
-[ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
+[ext_resource type="Texture2D" uid="uid://bxya2bueaw6va" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
