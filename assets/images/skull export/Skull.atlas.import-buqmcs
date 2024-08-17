@@ -1,0 +1,15 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://tg5xfvapah1f"
+path="res://.godot/imported/Skull.atlas-c1e6d7e0012bdad7eeb2e2ffab2b22ea.spatlas"
+
+[deps]
+
+source_file="res://assets/images/skull export/Skull.atlas"
+dest_files=["res://.godot/imported/Skull.atlas-c1e6d7e0012bdad7eeb2e2ffab2b22ea.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
