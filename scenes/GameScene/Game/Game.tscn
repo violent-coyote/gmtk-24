@@ -248,7 +248,7 @@ directional_shadow_pancake_size = 0.0
 sky_mode = 1
 
 [node name="swap water" type="MeshInstance3D" parent="World3D/Scene"]
-transform = Transform3D(4, 0, 0, 0, 0.999296, -0.149993, 0, 0.0374983, 3.99719, 0.75553, 0.313933, -18.0965)
+transform = Transform3D(-4, -3.20349e-09, -3.49457e-07, 0, 0.999328, -0.146575, 3.49691e-07, -0.0366437, -3.99732, 0.75553, 1.75886, 48.689)
 material_override = SubResource("StandardMaterial3D_7qv1j")
 mesh = SubResource("PlaneMesh_uig51")
 
@@ -397,12 +397,13 @@ mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("../../WorldEnvironment")
 
 [node name="CharacterBody3D" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774417, 1.17472, 1.47552)
 
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 0.983991, 0.178218, 0, -0.178218, 0.983991, 0, 1.80266, 4.06384)
+transform = Transform3D(-1, 1.56314e-08, -8.6014e-08, 0, 0.983885, 0.178802, 8.74228e-08, 0.178802, -0.983885, 0, 1.80266, -4.50202)
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.200213, -0.714934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.0370717, -0.714934)
 visible = false
 use_collision = true
 size = Vector3(8.60828, 0.1, 6.8446)
