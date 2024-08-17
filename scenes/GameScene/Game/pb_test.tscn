@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/GameScene/Game/flamecrab.gd" id="4_lv8lc"]
 [ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
 seed = -11960

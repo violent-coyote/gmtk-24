@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Unit
 
+
+# Signals
+signal unit_clicked
+
 # State Machine
 var current_state: State
 
@@ -10,11 +14,26 @@ var move_state: MoveState
 var kiss_state: KissState
 
 var busy := false
-@onready var love_fx = $LoveParticles3D
-# interactions
-# stub toe on rocks
-# kiss if collide with another player
 
+
+# Onready
+@onready var love_fx = $LoveParticles3D
+@onready var collision_shape : CollisionShape3D = $CollisionShape3D  # Adjust the path if necessary
+
+# interactions:
+# stub toe on rocks (collide with object)
+# kiss (collide with other unit)
+# react to player (clicked on)
+var personality_data = {
+	"name" : "",
+	"stats": {
+		# [-1 to 1]
+		"health": 0,
+		"hunger": 0,
+		"social": 0,
+		"happiness": 0
+	}
+}
 
 
 func _ready():
@@ -24,6 +43,8 @@ func _ready():
 	
 	current_state = idle_state
 	current_state.enter()
+
+	input_ray_pickable = true
 
 func _process(delta):
 	# Apply gravity
@@ -70,7 +91,8 @@ class State:
 # Idle State
 class IdleState extends State:
 	func enter():
-		print("Entering Idle State")
+		# print("Entering Idle State")
+		pass
 	
 	func update(_delta: float):
 		# # Check for conditions to change state
@@ -94,7 +116,7 @@ class MoveState extends State:
 		return Vector3(x, 0, z)
 
 	func enter():
-		print("Entering Move State")
+		# print("Entering Move State")
 		patrol_target = get_random_patrol_point()
 	
 	func update(delta: float):
@@ -111,9 +133,12 @@ class KissState extends State:
 	const KISS_DURATION = 2.0
 	var kiss_timer = 0.0
 
+	var kiss_cooldown_timer = 0.0
+	const KISS_COOLDOWN = 6.0
+
 	func enter():
 		unit.velocity = Vector3.ZERO
-		print("Entering Kiss State")
+		# print("Entering Kiss State")
 		unit.love_fx.emitting = true
 
 	func exit():
@@ -125,5 +150,17 @@ class KissState extends State:
 		if kiss_timer < KISS_DURATION:
 			kiss_timer += delta
 			unit.busy = true
+		if kiss_cooldown_timer < KISS_COOLDOWN:
+			kiss_cooldown_timer += delta
 		else:
 			unit.change_state(unit.idle_state)
+
+
+func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	print("Input event received on ", name)  # Debug print
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print("Clicked on Unit: ", name, " at position: ", position)
+		unit_clicked.emit(self)
+
+func _on_mouse_entered():
+	print("Mouse entered ", name)  # Debug print

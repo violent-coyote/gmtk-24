@@ -1,50 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://daix2ixjp0erh"]
+[gd_scene load_steps=12 format=3 uid="uid://daix2ixjp0erh"]
 
 [ext_resource type="Script" path="res://scripts/units/unit.gd" id="1_1lbcc"]
 [ext_resource type="Texture2D" uid="uid://bxya2bueaw6va" path="res://assets/images/Untitled.png" id="2_8jjm0"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_ffbaf"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ggn4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kqjqq"]
+viewport_path = NodePath("Spine3DAsset/test skull/SubViewport")
 
-[sub_resource type="Animation" id="Animation_lhr2m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="ViewportTexture" id="ViewportTexture_ip24n"]
+viewport_path = NodePath("Spine3DAsset/test skull/SubViewport")
 
-[sub_resource type="Animation" id="Animation_skpjh"]
-resource_name = "stabd"
-length = 1.726
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.29, 0.66, 1.04),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 2, 3, 4]
-}
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjr5u"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.02
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_kqjqq")
+metallic_specular = 0.0
+roughness = 0.0
+normal_scale = 0.44
+heightmap_scale = 16.0
+heightmap_flip_tangent = true
+heightmap_texture = SubResource("ViewportTexture_ip24n")
+billboard_mode = 2
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sldjf"]
-_data = {
-"RESET": SubResource("Animation_lhr2m"),
-"stabd": SubResource("Animation_skpjh")
-}
+[sub_resource type="QuadMesh" id="QuadMesh_1csw2"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(7, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fbe5"]
-size = Vector3(1, 1.22876, 0.218445)
+size = Vector3(1, 1.22876, 0.380722)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p5htl"]
 emission_shape_scale = Vector3(0.1, 0.1, 0.1)
@@ -78,25 +64,36 @@ font_size = 24
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17472, -0.186861)
 script = ExtResource("1_1lbcc")
 
-[node name="Spine Cat" type="Sprite3D" parent="."]
-transform = Transform3D(-0.185541, 0, 0.0409228, 0, 0.19, 0, -0.0409228, 0, -0.185541, 0, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture = ExtResource("2_8jjm0")
 hframes = 3
 vframes = 2
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Spine Cat"]
-sprite_frames = SubResource("SpriteFrames_ggn4k")
-speed_scale = 0.76
+[node name="Spine3DAsset" type="Node3D" parent="."]
+visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spine Cat"]
-libraries = {
-"": SubResource("AnimationLibrary_sldjf")
-}
-playback_auto_capture_transition_type = 5
-speed_scale = 2.005
+[node name="test skull" type="MeshInstance3D" parent="Spine3DAsset"]
+transform = Transform3D(-0.992753, 0, 0.120172, 0, 1, 0, -0.120172, 0, -0.992753, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_fjr5u")
+mesh = SubResource("QuadMesh_1csw2")
+
+[node name="SubViewport" type="SubViewport" parent="Spine3DAsset/test skull"]
+transparent_bg = true
+mesh_lod_threshold = 0.0
+size = Vector2i(1082, 802)
+
+[node name="SpineSprite" type="SpineSprite" parent="Spine3DAsset/test skull/SubViewport"]
+position = Vector2(511, 452)
+scale = Vector2(3.21, 3.21)
+skeleton_data_res = ExtResource("2_ffbaf")
+preview_skin = "default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11438, 0.0110169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11438, -0.127708)
 shape = SubResource("BoxShape3D_7fbe5")
 
 [node name="LoveParticles3D" type="GPUParticles3D" parent="."]
@@ -106,3 +103,6 @@ amount = 80
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_p5htl")
 draw_pass_1 = SubResource("TextMesh_035po")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
