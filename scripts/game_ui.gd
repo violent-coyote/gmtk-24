@@ -28,8 +28,13 @@ class_name GameUI
 @onready var button7: Button  = $Container/HBoxContainer/Button7
 @onready var button8: Button  = $Container/HBoxContainer/Button8
 
-
-
+func update_all_labels(str : String):
+	label.text = str
+	label2.text = str
+	label3.text = str
+	label4.text = str
+	label5.text = str
+	
 # @export var win_scene : PackedScene
 # @export var lose_scene : PackedScene
 # func _ready():

@@ -10,8 +10,9 @@ class_name GameStateMachine
 
 func _ready():
 	game_ui.add_button.pressed.connect(instantiate_unit)
+	game_ui.update_all_labels("")
 
 func instantiate_unit():
 	var unit = unit_base.instantiate()
 	game_scene.add_child(unit)
-	unit.global_transform.origin = Vector3(0, 2, 0)
+	unit.global_transform.origin = Vector3(0, 4, 0)
