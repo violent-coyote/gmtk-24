@@ -3,7 +3,7 @@ class_name Unit
 
 
 ## Signals
-signal unit_clicked
+signal unit_clicked(unit: Unit)
 
 ## State Machine
 var current_state: State
@@ -29,17 +29,19 @@ const MAX_SCALE = 15
 # react to player (clicked on)
 var personality_data = {
 	"name" : "",
+	"unit_type": UGC.UnitTypes.CRAB,
 	"stats": {
 		# [-1 to 1]
-		"health": 0,
-		"hunger": 0,
-		"social": 0,
-		"happiness": 0
+		UGC.StatPrimitives.HEALTH: 0,
+		UGC.StatPrimitives.HUNGER: 0,
+		UGC.StatPrimitives.SOCIAL: 0,
+		UGC.StatPrimitives.HAPPINESS: 0,
 	}
 }
 
 
 func _ready():
+	randomize()
 	idle_state = IdleState.new(self)
 	move_state = MoveState.new(self)
 	kiss_state = KissState.new(self)
@@ -51,6 +53,7 @@ func _ready():
 
 	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
 
+	randomize_personality()
 
 	# var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
 	# var spine_skin := skeleton.get_skin()
@@ -75,6 +78,29 @@ func _process(delta):
 	
 	move_and_slide()
 
+func randomize_personality():
+	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
+
+	# Randomize stats
+	for stat in UGC.StatPrimitives:
+		personality_data["stats"][stat] = randf_range(-1, 1)
+
+
+
+## implement unit type bias - cats are social, onions are healthy, and crabs are hungry
+func add_unit_type_bias():
+	var unit_type = personality_data["unit_type"]
+	var stats = personality_data["stats"]
+
+	if unit_type == UGC.UnitTypes.CAT:
+		stats[UGC.StatPrimitives.SOCIAL] = 0.8
+	elif personality_data["unit_type"] == UGC.UnitTypes.ONION:
+		stats[UGC.StatPrimitives.HEALTH] = 0.8
+		pass
+	elif personality_data["unit_type"] == UGC.UnitTypes.CRAB:
+		stats[UGC.StatPrimitives.HUNGER] = 0.8
+		pass
+
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
 	# if collider is StaticBody3D and collider.is_in_group("rocks"):
@@ -82,10 +108,7 @@ func handle_collision(collision: KinematicCollision3D):
 	if collider.is_in_group("unit"): 
 		change_state(kiss_state)
 
-func change_state(new_state: State):
-	current_state.exit()
-	current_state = new_state
-	current_state.enter()
+
 
 func scale_slot(slot_name: String, scale_factor: float):
 	var skeleton: SpineSkeleton = spine_sprite.get_skeleton()
@@ -99,8 +122,7 @@ func scale_slot(slot_name: String, scale_factor: float):
 			# attachment_data.scale_x = scale_factor
 			# attachment_data.scale_y = scale_factor
 			# skeleton.set_skin(spine_skin)
-
-
+# region State Machine
 # Base State class
 class State:
 	var unit: Unit
@@ -116,6 +138,11 @@ class State:
 	
 	func update(_delta: float):
 		pass
+
+func change_state(new_state: State):
+	current_state.exit()
+	current_state = new_state
+	current_state.enter()
 
 # Idle State
 class IdleState extends State:
@@ -185,10 +212,12 @@ class KissState extends State:
 			kiss_cooldown_timer += delta
 		else:
 			unit.change_state(unit.idle_state)
+# endregion
 
-
+# region Input/Clicking on Unit
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	# print("Input event received on ", name)  # Debug print
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("Clicked on Unit: ", name, " at position: ", position)
 		unit_clicked.emit(self)
+# endregion

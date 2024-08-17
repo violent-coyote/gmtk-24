@@ -2,14 +2,12 @@ extends Node
 # Unit Global Config (UGC)
 class_name UGC
 
-# region
-## Traits are all unique "personality" traits that can affect unit stats
-enum Traits {
-	AGGRESSIVE,
-	SNEAKY,
-	CRUEL,
-	COWARDLY
+enum UnitTypes {
+	CAT,
+	ONION,
+	CRAB
 }
+
 ## StatPrimitives are the unit stats that can be affected by traits that are shared among all units
 enum StatPrimitives {
 	HEALTH,
@@ -33,7 +31,16 @@ enum LifeEvents {
 
 static var list_of_names = [
 	"John",
-	"Absolutely Atrocious",
+	"Chef",
 	"Salmon Sally",
+	"Catlady",
+	"Small Potatoes"
+]
+
+static var values_to_effects = [
+	{
+
+	},
+
 ]
 
