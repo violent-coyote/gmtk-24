@@ -1,0 +1,15 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://dns6cp4bx43gn"
+path="res://.godot/imported/Untitled.atlas-d039e4ec655dcd219a2cfd122ec236eb.spatlas"
+
+[deps]
+
+source_file="res://assets/images/Untitled.atlas"
+dest_files=["res://.godot/imported/Untitled.atlas-d039e4ec655dcd219a2cfd122ec236eb.spatlas"]
+
+[params]
+
+normal_map_prefix="n"

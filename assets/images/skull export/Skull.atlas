@@ -1,0 +1,12 @@
+Skull.png
+size:204,143
+filter:Linear,Linear
+pma:true
+slice1
+bounds:114,18,123,88
+offsets:3,5,129,95
+rotate:90
+slice2
+bounds:2,2,139,110
+offsets:4,6,150,122
+rotate:90

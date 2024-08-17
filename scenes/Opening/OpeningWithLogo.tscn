@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://pk5htdpxrbkj"]
+[gd_scene load_steps=5 format=3 uid="uid://pk5htdpxrbkj"]
 
 [ext_resource type="PackedScene" uid="uid://ddhnnp8lxg84l" path="res://scenes/Opening/Opening.tscn" id="1_y8mjw"]
-[ext_resource type="Texture2D" uid="uid://cwcpp5aiu700p" path="res://assets/images/logo_vertical_color_dark.png" id="2_3f8vh"]
+[ext_resource type="Texture2D" uid="uid://bqjkclhe3ib81" path="res://assets/images/logo_vertical_color_dark.png" id="2_3f8vh"]
+[ext_resource type="Texture2D" uid="uid://ckxs7bbr0ugtv" path="res://assets/images/coflogo.png" id="3_05uyn"]
+[ext_resource type="AudioStream" uid="uid://bkqhvw1782adq" path="res://assets/audio/cof_splash.wav" id="3_kmm7g"]
 
 [node name="Opening" instance=ExtResource("1_y8mjw")]
-images = Array[Texture2D]([ExtResource("2_3f8vh")])
+images = Array[Texture2D]([ExtResource("3_05uyn"), ExtResource("2_3f8vh")])
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("3_kmm7g")
+pitch_scale = 0.06
 bus = &"Master"
