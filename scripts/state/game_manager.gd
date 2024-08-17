@@ -9,9 +9,9 @@ class_name GameStateMachine
 # global timer to track lifespan of units
 
 const MAX_UNITS = 5
-var currently_spawned_units : Array[Unit]= []
+var currently_spawned_units : Array[Unit] = []
 
-@onready var stateful_objectives = UGC.list_of_objectives.duplicate()
+@onready var stateful_objectives = UGC.list_of_objectives.duplicate(true)
 
 # add button
 
