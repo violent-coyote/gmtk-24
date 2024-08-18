@@ -21,7 +21,13 @@ const MAX_SCALE = 1.5
 ## Animations
 @onready var love_fx = $LoveParticles3D
 @onready var collision_shape : CollisionShape3D = $CollisionShape3D  # Adjust the path if necessary
-@onready var spine_sprite : SpineSprite = $SpineSprite3D/SubViewport/SpineSprite
+# crab, cat, and onion spine sprite 3ds
+@onready var crab_spine_sprite : SpineSprite = $CrabSpineSprite3D/SubViewport/SpineSprite
+@onready var cat_spine_sprite : SpineSprite = $CatSpineSprite3D/SubViewport/SpineSprite
+@onready var onion_spine_sprite : SpineSprite = $OnionSpineSprite3D/SubViewport/SpineSprite
+@onready var spine_sprite : SpineSprite 
+
+# dialog box
 @onready var dialog_box : Sprite3D = $DialogBoxSprite3D
 @onready var dialog_box_label : Label3D = $DialogBoxSprite3D/Label3D
 # interactions:
@@ -30,7 +36,7 @@ const MAX_SCALE = 1.5
 # react to player (clicked on)
 var personality_data = {
 	"name" : "",
-	"unit_type": UGC.UnitTypes.CRAB,
+	"unit_type": -1,
 	"stats": {
 		# [-1 to 1]
 		UGC.StatPrimitives.HEALTH: 0,
@@ -53,10 +59,13 @@ func _ready():
 
 	input_ray_pickable = true
 
-	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
 
 	unit_clicked.connect(pretty_print_personality)
 	randomize_personality()
+
+
+	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
+
 	dialog_box.hide()
 
 	update_skeleton_scale()
@@ -70,13 +79,16 @@ func _process(delta):
 	current_state.update(delta)
 
 	# process collisions
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		handle_collision(collision)
+	if !busy:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			handle_collision(collision)
 	
 	move_and_slide()
 
 func update_skeleton_scale():
+	if spine_sprite == null:
+		return
 	var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
 	# var spine_skin := skeleton.get_skin()
 	# spine_skin.
@@ -87,16 +99,53 @@ func update_skeleton_scale():
 func randomize_personality():
 	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
 
+	# Randomize unit type based on UnitTypes
+	personality_data["unit_type"] = UGC.UnitTypes.values()[randi() % UGC.UnitTypes.values().size()]
+
 	# Randomize stats
 	for stat in UGC.StatPrimitives.values():
 		personality_data["stats"][stat] = randf_range(-1, 1)
 
-	add_unit_type_bias()
+
+	## implement unit type bias - cats are social, onions are healthy, and crabs are hungry
+	var unit_type = personality_data["unit_type"]
+	var stats = personality_data["stats"]
+
+	if unit_type == UGC.UnitTypes.CAT:
+		# cats are social bias
+		stats[UGC.StatPrimitives.SOCIAL] = 0.2
+		#
+		cat_spine_sprite.get_parent().get_parent().show()
+		# FIXME temporary hide the sprite
+		var subviewport : SubViewport = cat_spine_sprite.get_parent()
+		subviewport.size = Vector2(0,0)
+		spine_sprite = cat_spine_sprite
+		print('displaying cat')
+		# onion_spine_sprite.queue_free()
+		# crab_spine_sprite.queue_free()
+	if unit_type == UGC.UnitTypes.ONION:
+		stats[UGC.StatPrimitives.HEALTH] = 0.2
+		onion_spine_sprite.get_parent().get_parent().show()
+		# FIXME temporary hide the sprite
+		var subviewport : SubViewport = onion_spine_sprite.get_parent()
+		subviewport.size = Vector2(0,0)
+		spine_sprite = onion_spine_sprite
+		print('displaying onion')
+		# cat_spine_sprite.queue_free()
+		# crab_spine_sprite.queue_free()
+	if unit_type == UGC.UnitTypes.CRAB:
+		stats[UGC.StatPrimitives.HUNGER] = 0.2
+		crab_spine_sprite.get_parent().get_parent().show()
+		spine_sprite = crab_spine_sprite
+		print('displaying crab')
+		# onion_spine_sprite.queue_free()
+		# cat_spine_sprite.queue_free()
+
 
 func pretty_print_personality():
 	busy = true
 	# try godot manager
-	var stats = "Name: " + personality_data["name"] + "\n" + "Type: " + pretty_print_unit_type_to_string(personality_data["unit_type"]) + "\n" 
+	var stats = "I'm " + personality_data["name"] + " the "  + pretty_print_unit_type_to_string(personality_data["unit_type"]) + "\n" 
 	# assemble descriptive string based on values of stats
 	# find max stat
 	var max_stat = UGC.StatPrimitives.HEALTH
@@ -109,13 +158,18 @@ func pretty_print_personality():
 	# stats += "Social: " + str(personality_data["stats"][UGC.StatPrimitives.SOCIAL]) + "\n"
 	# stats += "Happiness: " + str(personality_data["stats"][UGC.StatPrimitives.HAPPINESS]) + "\n"
 
-	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(personality_data["stats"][max_stat]) + "\n"
+	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(round_to_dec(personality_data["stats"][max_stat], 2)) + "\n"
+	
+	for stat in UGC.StatPrimitives.values():
+		if stat != max_stat:
+			stats += pretty_print_trait_to_string(stat) + ": " + str(round_to_dec(personality_data["stats"][stat], 2)) + "\n"
+
 	dialog_box_label.text = stats
 	dialog_box.show()
 	change_state(idle_state)
 
 	# wait 8 seconds, then hide the dialogue box
-	await get_tree().create_timer(8.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	dialog_box.hide()
 	busy = false
 
@@ -124,6 +178,14 @@ func pretty_print_personality():
 	# print("Stats: ")
 	# for stat in UGC.StatPrimitives.values():
 	# 	print(pretty_print_trait_to_string(stat), ": ", personality_data["stats"][stat])
+
+## https://forum.godotengine.org/t/how-to-round-to-a-specific-decimal-place/27552/3?u=carlosmichael
+## round_to_dec(1.352, 2) #rounds to the 2nd decimal digit. 1.35
+func round_to_dec(num : float, digit : int):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+	
+
 func pretty_print_unit_type_to_string(unit_type: UGC.UnitTypes):
 	match unit_type:
 		UGC.UnitTypes.CAT:
@@ -144,30 +206,24 @@ func pretty_print_trait_to_string(unit_trait: UGC.StatPrimitives):
 		UGC.StatPrimitives.HAPPINESS:
 			return "Happiness"
 		
-## implement unit type bias - cats are social, onions are healthy, and crabs are hungry
-func add_unit_type_bias():
-	var unit_type = personality_data["unit_type"]
-	var stats = personality_data["stats"]
 
-	if unit_type == UGC.UnitTypes.CAT:
-		stats[UGC.StatPrimitives.SOCIAL] = 0.8
-	if unit_type == UGC.UnitTypes.ONION:
-		stats[UGC.StatPrimitives.HEALTH] = 0.8
-	if unit_type == UGC.UnitTypes.CRAB:
-		stats[UGC.StatPrimitives.HUNGER] = 0.8
 
 
 ## adjust stat function
 func adjust_stat(stat: UGC.StatPrimitives, amount: float):
 	personality_data["stats"][stat] += amount
 	# clamp to -1 to 1
-	clamp(personality_data["stats"][stat], -1, 1)
+	personality_data["stats"][stat] = clampf(personality_data["stats"][stat], -1.0, 1.0)
+	# print(personality_data["stats"])
 	update_skeleton_scale()
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
-	# if collider is StaticBody3D and collider.is_in_group("rocks"):
+	if collider == null:
+		return
+	if collider.is_in_group("rocks"):
 	# 	# stub toe on rocks
+		print("ouch")
 	if collider.is_in_group("unit"): 
 		change_state(kiss_state)
 
@@ -256,12 +312,22 @@ class KissState extends State:
 	var kiss_cooldown_timer = 0.0
 	const KISS_COOLDOWN = 6.0
 
+	const KISS_LIMIT = 2
+	var kiss_count = 0
+
 	func enter():
+		if unit.busy:
+			return
 		unit.velocity = Vector3.ZERO
 		unit.busy = true
+		kiss_count += 1
+		if kiss_count >= KISS_LIMIT:
+			unit.change_state(unit.idle_state)
+			return
 		# print("Entering Kiss State")
 		unit.love_fx.emitting = true
-		unit.spine_sprite.get_animation_state().set_animation("happy",true,0)
+		if unit.spine_sprite != null:
+			unit.spine_sprite.get_animation_state().set_animation("happy",true,0)
 		# adjust stat for happiness by + 0.1
 		# adjust stat for social by + 0.2
 		unit.adjust_stat(UGC.StatPrimitives.HEALTH, 0.3)

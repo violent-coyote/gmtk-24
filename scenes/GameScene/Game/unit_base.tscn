@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://daix2ixjp0erh"]
+[gd_scene load_steps=36 format=3 uid="uid://daix2ixjp0erh"]
 
 [ext_resource type="Script" path="res://scripts/units/unit.gd" id="1_1lbcc"]
+[ext_resource type="Texture2D" uid="uid://bo7antrdnplwn" path="res://assets/images/sprites/cat.png" id="2_73iec"]
 [ext_resource type="SpineAtlasResource" uid="uid://cxsw04nje02lj" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.atlas" id="2_cv1s8"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://5lngm36a0p0p" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.skel" id="3_t6hkd"]
 [ext_resource type="Texture2D" uid="uid://cdqq1xybhoe6t" path="res://assets/images/cm/rect1.png" id="4_qw7yu"]
+[ext_resource type="Texture2D" uid="uid://d13kta7p615d1" path="res://assets/images/sprites/onion.png" id="5_sbs3d"]
+[ext_resource type="Texture2D" uid="uid://dihkaor5d5f3t" path="res://assets/images/sprites/flame_rig.png" id="6_eu6c1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ss718"]
-viewport_path = NodePath("SpineSprite3D/SubViewport")
+viewport_path = NodePath("CrabSpineSprite3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0wdd"]
 resource_local_to_scene = true
@@ -35,7 +38,7 @@ skeleton_file_res = ExtResource("3_t6hkd")
 default_mix = 0.1
 animation_mixes = [SubResource("SpineAnimationMix_bahkd"), SubResource("SpineAnimationMix_1l6k8")]
 
-[sub_resource type="Animation" id="Animation_cpgq1"]
+[sub_resource type="Animation" id="Animation_nldb4"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -63,7 +66,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_x86ev"]
+[sub_resource type="Animation" id="Animation_ovjf7"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -91,7 +94,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_32ajb"]
+[sub_resource type="Animation" id="Animation_5t0lo"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -119,7 +122,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_pos8v"]
+[sub_resource type="Animation" id="Animation_yqhtx"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -147,7 +150,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_gghvj"]
+[sub_resource type="Animation" id="Animation_ypytm"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -175,14 +178,314 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxwjd"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vodyi"]
 _data = {
-"-- Empty --": SubResource("Animation_gghvj"),
-"RESET": SubResource("Animation_gghvj"),
-"happy": SubResource("Animation_x86ev"),
-"happy_looped": SubResource("Animation_cpgq1"),
-"sad": SubResource("Animation_pos8v"),
-"sad_looped": SubResource("Animation_32ajb")
+"-- Empty --": SubResource("Animation_ypytm"),
+"RESET": SubResource("Animation_ypytm"),
+"happy": SubResource("Animation_ovjf7"),
+"happy_looped": SubResource("Animation_nldb4"),
+"sad": SubResource("Animation_yqhtx"),
+"sad_looped": SubResource("Animation_5t0lo")
+}
+
+[sub_resource type="Animation" id="Animation_kmmrp"]
+resource_name = "happy_looped"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_a80qg"]
+resource_name = "happy"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_15typ"]
+resource_name = "sad_looped"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vmtuq"]
+resource_name = "sad"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_84irk"]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5fvc"]
+_data = {
+"-- Empty --": SubResource("Animation_84irk"),
+"RESET": SubResource("Animation_84irk"),
+"happy": SubResource("Animation_a80qg"),
+"happy_looped": SubResource("Animation_kmmrp"),
+"sad": SubResource("Animation_vmtuq"),
+"sad_looped": SubResource("Animation_15typ")
+}
+
+[sub_resource type="Animation" id="Animation_jcl0y"]
+resource_name = "happy_looped"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mmkn8"]
+resource_name = "happy"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["happy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jl0b6"]
+resource_name = "sad_looped"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3nhsh"]
+resource_name = "sad"
+length = 0.733333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": ["sad"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xno1n"]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation_name")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:loop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfoov"]
+_data = {
+"-- Empty --": SubResource("Animation_xno1n"),
+"RESET": SubResource("Animation_xno1n"),
+"happy": SubResource("Animation_mmkn8"),
+"happy_looped": SubResource("Animation_jcl0y"),
+"sad": SubResource("Animation_3nhsh"),
+"sad_looped": SubResource("Animation_jl0b6")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fbe5"]
@@ -220,17 +523,22 @@ font_size = 24
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17472, -0.186861)
 script = ExtResource("1_1lbcc")
 
-[node name="SpineSprite3D" type="MeshInstance3D" parent="."]
+[node name="CatSpineSprite3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.27, 0, -1.9845e-07, 0, 2.27, 0, 1.9845e-07, 0, -2.27, 0.583213, -0.120144, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_d0wdd")
 mesh = SubResource("QuadMesh_3hi15")
 skeleton = NodePath("")
 
-[node name="SubViewport" type="SubViewport" parent="SpineSprite3D"]
+[node name="Sprite3D" type="Sprite3D" parent="CatSpineSprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.263812, 0, -0.0179077)
+texture = ExtResource("2_73iec")
+
+[node name="SubViewport" type="SubViewport" parent="CatSpineSprite3D"]
 transparent_bg = true
 size = Vector2i(872, 732)
 
-[node name="SpineSprite" type="SpineSprite" parent="SpineSprite3D/SubViewport"]
+[node name="SpineSprite" type="SpineSprite" parent="CatSpineSprite3D/SubViewport"]
 position = Vector2(626, 494)
 rotation = 0.0820305
 skew = 0.235619
@@ -242,12 +550,82 @@ preview_animation = "sad"
 preview_frame = false
 preview_time = 0.0
 
-[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="SpineSprite3D/SubViewport/SpineSprite"]
+[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="CatSpineSprite3D/SubViewport/SpineSprite"]
 track_index = 0
 
-[node name="SpineSprite Track 0" type="AnimationPlayer" parent="SpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
+[node name="SpineSprite Track 0" type="AnimationPlayer" parent="CatSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_nxwjd")
+"": SubResource("AnimationLibrary_vodyi")
+}
+
+[node name="OnionSpineSprite3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.27, 0, -1.9845e-07, 0, 2.27, 0, 1.9845e-07, 0, -2.27, 0.583213, -0.120144, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_d0wdd")
+mesh = SubResource("QuadMesh_3hi15")
+skeleton = NodePath("")
+
+[node name="Sprite3D" type="Sprite3D" parent="OnionSpineSprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.263812, 0, -0.0179077)
+texture = ExtResource("5_sbs3d")
+
+[node name="SubViewport" type="SubViewport" parent="OnionSpineSprite3D"]
+transparent_bg = true
+size = Vector2i(872, 732)
+
+[node name="SpineSprite" type="SpineSprite" parent="OnionSpineSprite3D/SubViewport"]
+position = Vector2(626, 494)
+rotation = 0.0820305
+skew = 0.235619
+skeleton_data_res = SubResource("SpineSkeletonDataResource_emac4")
+root = true
+bones = true
+preview_skin = "default"
+preview_animation = "sad"
+preview_frame = false
+preview_time = 0.0
+
+[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="OnionSpineSprite3D/SubViewport/SpineSprite"]
+track_index = 0
+
+[node name="SpineSprite Track 0" type="AnimationPlayer" parent="OnionSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
+libraries = {
+"": SubResource("AnimationLibrary_e5fvc")
+}
+
+[node name="CrabSpineSprite3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.27, 0, -1.9845e-07, 0, 2.27, 0, 1.9845e-07, 0, -2.27, 0.583213, -0.120144, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_d0wdd")
+mesh = SubResource("QuadMesh_3hi15")
+skeleton = NodePath("")
+
+[node name="Sprite3D" type="Sprite3D" parent="CrabSpineSprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.272489, 0, -0.00760859)
+texture = ExtResource("6_eu6c1")
+
+[node name="SubViewport" type="SubViewport" parent="CrabSpineSprite3D"]
+transparent_bg = true
+size = Vector2i(872, 732)
+
+[node name="SpineSprite" type="SpineSprite" parent="CrabSpineSprite3D/SubViewport"]
+position = Vector2(626, 494)
+rotation = 0.0820305
+skew = 0.235619
+skeleton_data_res = SubResource("SpineSkeletonDataResource_emac4")
+root = true
+bones = true
+preview_skin = "default"
+preview_animation = "sad"
+preview_frame = false
+preview_time = 0.0
+
+[node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="CrabSpineSprite3D/SubViewport/SpineSprite"]
+track_index = 0
+
+[node name="SpineSprite Track 0" type="AnimationPlayer" parent="CrabSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
+libraries = {
+"": SubResource("AnimationLibrary_nfoov")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -272,6 +650,6 @@ modulate = Color(0, 0, 0, 1)
 text = "lorem ipsum"
 font_size = 128
 autowrap_mode = 3
-width = 1800.0
+width = 2200.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

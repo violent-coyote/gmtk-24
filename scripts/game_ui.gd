@@ -8,7 +8,7 @@ class_name GameUI
 
 # Container with Buttons
 @onready var container : Control = $Container
-@onready var add_button : Button = $Container/AddButton
+# @onready var add_button : Button = $Container/AddButton
 @onready var submit_button : Button = $Container/SubmitButton
 @onready var vbox_container :VBoxContainer = $Container/VBoxContainer
 
