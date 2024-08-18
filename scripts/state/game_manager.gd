@@ -18,8 +18,12 @@ var currently_spawned_units : Array[Unit] = []
 func _ready():
 	game_ui.submit_button.pressed.connect(check_objective_completion)
 
-	game_ui.add_button.pressed.connect(instantiate_unit)
+	# game_ui.add_button.pressed.connect(instantiate_unit)
 	game_ui.update_all_labels()
+	instantiate_unit()
+	await get_tree().create_timer(1.0).timeout
+	instantiate_unit()
+	await get_tree().create_timer(1.0).timeout
 	instantiate_unit()
 
 func check_objective_completion() -> Array[Unit]:

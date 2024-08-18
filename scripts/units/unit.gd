@@ -166,8 +166,9 @@ func adjust_stat(stat: UGC.StatPrimitives, amount: float):
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
-	# if collider is StaticBody3D and collider.is_in_group("rocks"):
+	if collider.is_in_group("rocks"):
 	# 	# stub toe on rocks
+		print("ouch")
 	if collider.is_in_group("unit"): 
 		change_state(kiss_state)
 
@@ -257,6 +258,8 @@ class KissState extends State:
 	const KISS_COOLDOWN = 6.0
 
 	func enter():
+		if unit.busy:
+			return
 		unit.velocity = Vector3.ZERO
 		unit.busy = true
 		# print("Entering Kiss State")
