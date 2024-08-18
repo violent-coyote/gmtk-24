@@ -1,13 +1,14 @@
-[gd_scene load_steps=53 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=57 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
-[ext_resource type="Texture2D" uid="uid://4pkcqcu10bmg" path="res://assets/images/pyramid.png" id="5_val8w"]
-[ext_resource type="PackedScene" uid="uid://d3b5txjo85c1m" path="res://assets/images/palm.glb" id="6_q2fpy"]
-[ext_resource type="PackedScene" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
-[ext_resource type="PackedScene" uid="uid://cdqukrqaywu2b" path="res://assets/images/cloud.glb" id="8_byqvp"]
-[ext_resource type="PackedScene" uid="uid://bf47f72n1q0y4" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
-[ext_resource type="Texture2D" uid="uid://bxya2bueaw6va" path="res://assets/images/Untitled.png" id="15_ee3ev"]
+[ext_resource type="Texture2D" uid="uid://dbbit8u7qfvfv" path="res://assets/images/pyramid.png" id="5_val8w"]
+[ext_resource type="PackedScene" uid="uid://caxmlv1tah0p6" path="res://assets/images/palm.glb" id="6_q2fpy"]
+[ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
+[ext_resource type="PackedScene" uid="uid://s2advrvqm1yu" path="res://assets/images/cloud.glb" id="8_byqvp"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://cttd8mh8n8hvp" path="res://assets/images/onionboyexport/onion.tres" id="9_hcdr6"]
+[ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
+[ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -293,7 +294,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-[sub_resource type="Animation" id="Animation_188pk"]
+[sub_resource type="Animation" id="Animation_n2i0n"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -321,7 +322,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_e6te2"]
+[sub_resource type="Animation" id="Animation_fwbnu"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -349,7 +350,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_eovl8"]
+[sub_resource type="Animation" id="Animation_kywnx"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -377,7 +378,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_rwskg"]
+[sub_resource type="Animation" id="Animation_6d748"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -405,7 +406,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_heh63"]
+[sub_resource type="Animation" id="Animation_48cw8"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -433,14 +434,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuwo0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sirsk"]
 _data = {
-"-- Empty --": SubResource("Animation_heh63"),
-"RESET": SubResource("Animation_heh63"),
-"happy": SubResource("Animation_e6te2"),
-"happy_looped": SubResource("Animation_188pk"),
-"sad": SubResource("Animation_rwskg"),
-"sad_looped": SubResource("Animation_eovl8")
+"-- Empty --": SubResource("Animation_48cw8"),
+"RESET": SubResource("Animation_48cw8"),
+"happy": SubResource("Animation_fwbnu"),
+"happy_looped": SubResource("Animation_n2i0n"),
+"sad": SubResource("Animation_6d748"),
+"sad_looped": SubResource("Animation_kywnx")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
@@ -456,6 +457,21 @@ disable_receive_shadows = true
 [sub_resource type="PrismMesh" id="PrismMesh_id68b"]
 lightmap_size_hint = Vector2i(11, 18)
 size = Vector3(10, 10, 0.53)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_keec0"]
+viewport_path = NodePath("onion boi/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipf5d"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.13
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_keec0")
+metallic_specular = 0.0
+roughness = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_af12j"]
 
 [node name="Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
@@ -686,7 +702,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_xuwo0")
+"": SubResource("AnimationLibrary_sirsk")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -706,3 +722,20 @@ transform = Transform3D(0.955256, 0, -8.60715, 0, 8.66, 0, 8.60715, 0, 0.955256,
 
 [node name="purplegrass" parent="." instance=ExtResource("9_vjpqo")]
 transform = Transform3D(-1.28943, 0, 3.15681, 0, 3.41, 0, -3.15681, 0, -1.28943, 4.11276, 0.406381, 7.88553)
+
+[node name="onion boi" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.93092, 0, -0.272129, 0, 1.95, 0, 0.272129, 0, -1.93092, 1.50402, 0.760683, -0.933636)
+material_override = SubResource("StandardMaterial3D_ipf5d")
+mesh = SubResource("QuadMesh_af12j")
+
+[node name="SubViewport" type="SubViewport" parent="onion boi"]
+transparent_bg = true
+size = Vector2i(902, 652)
+
+[node name="SpineSprite" type="SpineSprite" parent="onion boi/SubViewport"]
+position = Vector2(589, 490)
+skeleton_data_res = ExtResource("9_hcdr6")
+preview_skin = "Default"
+preview_animation = "smashhappy"
+preview_frame = false
+preview_time = 0.0
