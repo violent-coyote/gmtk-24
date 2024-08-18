@@ -68,7 +68,7 @@ func _ready():
 	randomize_personality()
 
 
-	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
+	spine_sprite.get_animation_state().add_animation("happy",2,true,1)
 
 	dialog_box.hide()
 
