@@ -1,10 +1,10 @@
-# Attribution
-## Collaborators
+# Credits
+## Crab on Fire LLC
 
-### Role
-[alexrc](https://www.crabonfire.com)
-[cm](https://www.carlos-michael.com)
-[paulb](https://www.crabonfire.com)
+### crabs on fire
+[alexrc](https://www.crabonfire.com) - programming, music and sound design
+[cm](https://www.carlos-michael.com) - game development and game design
+[paulb](https://www.crabonfire.com) - art, animation, and sound design
 
 
 ## Tools
