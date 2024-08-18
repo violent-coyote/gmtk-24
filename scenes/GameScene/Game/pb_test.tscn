@@ -1,8 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=53 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
-[ext_resource type="Script" path="res://scenes/GameScene/Game/flamecrab.gd" id="4_lv8lc"]
 [ext_resource type="Texture2D" uid="uid://4pkcqcu10bmg" path="res://assets/images/pyramid.png" id="5_val8w"]
 [ext_resource type="PackedScene" uid="uid://d3b5txjo85c1m" path="res://assets/images/palm.glb" id="6_q2fpy"]
 [ext_resource type="PackedScene" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
@@ -294,7 +293,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-[sub_resource type="Animation" id="Animation_ydff2"]
+[sub_resource type="Animation" id="Animation_188pk"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -322,7 +321,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_f1q0l"]
+[sub_resource type="Animation" id="Animation_e6te2"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -350,7 +349,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_j4jon"]
+[sub_resource type="Animation" id="Animation_eovl8"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -378,7 +377,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_loooe"]
+[sub_resource type="Animation" id="Animation_rwskg"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -406,7 +405,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_sjyba"]
+[sub_resource type="Animation" id="Animation_heh63"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -434,14 +433,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dthol"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuwo0"]
 _data = {
-"-- Empty --": SubResource("Animation_sjyba"),
-"RESET": SubResource("Animation_sjyba"),
-"happy": SubResource("Animation_f1q0l"),
-"happy_looped": SubResource("Animation_ydff2"),
-"sad": SubResource("Animation_loooe"),
-"sad_looped": SubResource("Animation_j4jon")
+"-- Empty --": SubResource("Animation_heh63"),
+"RESET": SubResource("Animation_heh63"),
+"happy": SubResource("Animation_e6te2"),
+"happy_looped": SubResource("Animation_188pk"),
+"sad": SubResource("Animation_rwskg"),
+"sad_looped": SubResource("Animation_eovl8")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
@@ -681,14 +680,13 @@ preview_skin = "default"
 preview_animation = "sad"
 preview_frame = false
 preview_time = 0.0
-script = ExtResource("4_lv8lc")
 
 [node name="SpineAnimationTrack" type="SpineAnimationTrack" parent="flame crab/SubViewport/SpineSprite"]
 track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_dthol")
+"": SubResource("AnimationLibrary_xuwo0")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

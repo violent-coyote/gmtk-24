@@ -8,6 +8,3 @@
 game_scene_path = "res://scenes/GameScene/GameUI.tscn"
 options_packed_scene = ExtResource("2_gj3ig")
 credits_packed_scene = ExtResource("3_a3mku")
-
-[node name="BackgroundMusicPlayer" parent="." index="1"]
-bus = &"Master"

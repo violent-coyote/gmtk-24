@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bid27wf21e2o8"]
+[gd_scene load_steps=11 format=3 uid="uid://bid27wf21e2o8"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_jjtcj"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/PauseMenuController.gd" id="4_tjl81"]
+[ext_resource type="AudioStream" uid="uid://bsdy1ptfq6hbs" path="res://assets/audio/Treeandbirdsmidnight.ogg" id="5_3p6j6"]
 [ext_resource type="PackedScene" uid="uid://cmsjsyiccm7jm" path="res://scenes/Menus/PauseMenu/PauseMenu.tscn" id="5_32lpi"]
+[ext_resource type="AudioStream" uid="uid://o5ya4cpns06n" path="res://assets/audio/N_36th_St_2.ogg" id="6_8u1j4"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/MusicPlayers/BackgroundMusicPlayer.tscn" id="7_8fg1h"]
 [ext_resource type="PackedScene" uid="uid://cd0jbh4metflb" path="res://addons/maaacks_game_template/base/scenes/LoadingScreen/LoadingScreen.tscn" id="8_drvwh"]
 [ext_resource type="Script" path="res://scenes/GameScene/InputDisplayLabel.gd" id="10_dtnuc"]
@@ -28,7 +30,11 @@ script = ExtResource("4_tjl81")
 pause_menu_packed = ExtResource("5_32lpi")
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("7_8fg1h")]
-bus = &"Master"
+stream = ExtResource("5_3p6j6")
+bus = &"SFX"
+
+[node name="BackgroundMusicPlayer2" parent="." instance=ExtResource("7_8fg1h")]
+stream = ExtResource("6_8u1j4")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("8_drvwh")]
 visible = false

@@ -22,7 +22,8 @@ const MAX_SCALE = 15
 @onready var love_fx = $LoveParticles3D
 @onready var collision_shape : CollisionShape3D = $CollisionShape3D  # Adjust the path if necessary
 @onready var spine_sprite : SpineSprite = $SpineSprite3D/SubViewport/SpineSprite
-
+@onready var dialog_box : Sprite3D = $DialogBoxSprite3D
+@onready var dialog_box_label : Label3D = $DialogBoxSprite3D/Label3D
 # interactions:
 # stub toe on rocks (collide with object)
 # kiss (collide with other unit)
@@ -56,6 +57,7 @@ func _ready():
 
 	unit_clicked.connect(pretty_print_personality)
 	randomize_personality()
+	dialog_box.hide()
 
 	# var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
 	# var spine_skin := skeleton.get_skin()
@@ -90,12 +92,44 @@ func randomize_personality():
 	add_unit_type_bias()
 
 func pretty_print_personality():
-	print("Name: ", personality_data["name"])
-	print("Type: ", personality_data["unit_type"])
-	print("Stats: ")
+	busy = true
+	# try godot manager
+	var stats = "Name: " + personality_data["name"] + "\n" + "Type: " + pretty_print_unit_type_to_string(personality_data["unit_type"]) + "\n" 
+	# assemble descriptive string based on values of stats
+	# find max stat
+	var max_stat = UGC.StatPrimitives.HEALTH
 	for stat in UGC.StatPrimitives.values():
-		print(pretty_print_trait_to_string(stat), ": ", personality_data["stats"][stat])
+		if personality_data["stats"][stat] > personality_data["stats"][max_stat]:
+			max_stat = stat
 
+	# stats += "Health: " + str(personality_data["stats"][UGC.StatPrimitives.HEALTH]) + "\n"
+	# stats += "Hunger: " + str(personality_data["stats"][UGC.StatPrimitives.HUNGER]) + "\n"
+	# stats += "Social: " + str(personality_data["stats"][UGC.StatPrimitives.SOCIAL]) + "\n"
+	# stats += "Happiness: " + str(personality_data["stats"][UGC.StatPrimitives.HAPPINESS]) + "\n"
+
+	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(personality_data["stats"][max_stat]) + "\n"
+	dialog_box_label.text = stats
+	dialog_box.show()
+	change_state(idle_state)
+
+	# wait 8 seconds, then hide the dialogue box
+	await get_tree().create_timer(8.0).timeout
+	dialog_box.hide()
+	busy = false
+
+	# print("Name: ", personality_data["name"])
+	# print("Type: ", personality_data["unit_type"])
+	# print("Stats: ")
+	# for stat in UGC.StatPrimitives.values():
+	# 	print(pretty_print_trait_to_string(stat), ": ", personality_data["stats"][stat])
+func pretty_print_unit_type_to_string(unit_type: UGC.UnitTypes):
+	match unit_type:
+		UGC.UnitTypes.CAT:
+			return "Cat"
+		UGC.UnitTypes.ONION:
+			return "Onion"
+		UGC.UnitTypes.CRAB:
+			return "Crab"
 
 func pretty_print_trait_to_string(unit_trait: UGC.StatPrimitives):
 	match unit_trait:
@@ -177,6 +211,7 @@ func change_state(new_state: State):
 class IdleState extends State:
 	func enter():
 		# print("Entering Idle State")
+		unit.velocity = Vector3.ZERO
 		pass
 	
 	func update(_delta: float):
@@ -253,6 +288,7 @@ class KissState extends State:
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	# print("Input event received on ", name)  # Debug print
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("Clicked on Unit: ", name, " at position: ", position)
-		unit_clicked.emit()
+		if not busy:
+			print("Clicked on Unit: ", name, " at position: ", position)
+			unit_clicked.emit()
 # endregion

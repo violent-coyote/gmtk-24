@@ -7,6 +7,7 @@
 
 [node name="Opening" instance=ExtResource("1_y8mjw")]
 images = Array[Texture2D]([ExtResource("3_05uyn"), ExtResource("2_3f8vh")])
+show_loading_screen = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 stream = ExtResource("3_kmm7g")

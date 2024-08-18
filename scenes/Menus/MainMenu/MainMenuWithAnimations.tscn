@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpr8qt3bd1qn6"]
+[gd_scene load_steps=18 format=3 uid="uid://bpr8qt3bd1qn6"]
 
 [ext_resource type="PackedScene" uid="uid://g1k0r4b27opx" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_s3j6w"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_nfqgk"]
+[ext_resource type="AudioStream" uid="uid://bsdy1ptfq6hbs" path="res://assets/audio/Treeandbirdsmidnight.ogg" id="3_72shl"]
 [ext_resource type="PackedScene" uid="uid://dc4gwxaiurd5d" path="res://scenes/GameScene/Game/pb_test.tscn" id="3_vho0x"]
 
 [sub_resource type="Animation" id="1"]
@@ -361,6 +362,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
+
+[node name="BackgroundMusicPlayer" parent="." index="3"]
+stream = ExtResource("3_72shl")
+bus = &"SFX"
 
 [node name="VersionNameLabel" parent="." index="5"]
 modulate = Color(1, 1, 1, 0)
