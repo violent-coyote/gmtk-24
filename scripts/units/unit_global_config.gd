@@ -2,14 +2,12 @@ extends Node
 # Unit Global Config (UGC)
 class_name UGC
 
-# region
-## Traits are all unique "personality" traits that can affect unit stats
-enum Traits {
-	AGGRESSIVE,
-	SNEAKY,
-	CRUEL,
-	COWARDLY
+enum UnitTypes {
+	CAT,
+	ONION,
+	CRAB
 }
+
 ## StatPrimitives are the unit stats that can be affected by traits that are shared among all units
 enum StatPrimitives {
 	HEALTH,
@@ -33,7 +31,67 @@ enum LifeEvents {
 
 static var list_of_names = [
 	"John",
-	"Absolutely Atrocious",
+	"Chef",
 	"Salmon Sally",
+	"Catlady",
+	"Small Potatoes"
+]
+## FIXME this should be a stateful list where it checks if the objective is complete
+static var list_of_objectives = [
+	{
+		"description": "1 healthy onion, please",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.ONION,
+				"trait": StatPrimitives.HEALTH,
+				"target": 0.8
+			},
+		"completed": false
+		
+	},
+	{
+		"description": "I need a chatty cat",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CAT,
+				"trait": StatPrimitives.SOCIAL,
+				"target": 0.8
+			},
+		"completed": false
+		
+	},
+	{
+		"description": "Hungry Crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.HUNGER,
+				"target": 0.4
+			},
+		"completed": false
+		
+	},
+	{
+		"description" : "Chatty crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.SOCIAL,
+				"target": 0.8
+			},
+		"completed": false
+		
+	},
+	{
+		"description" : "Healthy Crab",
+		"objective": 
+			{
+				"unit_type" : UnitTypes.CRAB,
+				"trait": StatPrimitives.HEALTH,
+				"target": 0.8
+			},
+		"completed": false
+		
+	}
 ]
 

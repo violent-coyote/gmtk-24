@@ -9,6 +9,7 @@ class_name GameUI
 # Container with Buttons
 @onready var container : Control = $Container
 @onready var add_button : Button = $Container/AddButton
+@onready var submit_button : Button = $Container/SubmitButton
 @onready var vbox_container :VBoxContainer = $Container/VBoxContainer
 
 # labels 1-5
@@ -28,12 +29,26 @@ class_name GameUI
 @onready var button7: Button  = $Container/HBoxContainer/Button7
 @onready var button8: Button  = $Container/HBoxContainer/Button8
 
-func update_all_labels(str : String):
-	label.text = str
-	label2.text = str
-	label3.text = str
-	label4.text = str
-	label5.text = str
+func update_all_labels():
+	# for the list of objectives in UGC, update the labels
+	label.text = UGC.list_of_objectives[0].description
+	label2.text = UGC.list_of_objectives[1].description
+	label3.text = UGC.list_of_objectives[2].description
+	label4.text = UGC.list_of_objectives[3].description
+	label5.text = UGC.list_of_objectives[4].description
+
+func objective_to_label(objective_index : int):
+	match objective_index:
+		0:
+			return label
+		1:
+			return label2
+		2:
+			return label3
+		3:
+			return label4
+		4:
+			return label5
 	
 # @export var win_scene : PackedScene
 # @export var lose_scene : PackedScene

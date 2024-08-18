@@ -22,6 +22,10 @@ SceneLoader="*res://addons/maaacks_game_template/base/scenes/Autoloads/SceneLoad
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectMusicController.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectUISoundController.tscn"
 
+[dialogue_manager]
+
+general/new_with_template=false
+
 [display]
 
 window/stretch/mode="canvas_items"

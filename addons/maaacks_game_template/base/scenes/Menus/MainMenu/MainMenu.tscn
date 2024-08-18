@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=9 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scenes/Menus/MainMenu/MainMenu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_game_template/base/scenes/Menus/OptionsMenu/MasterOptionsMenuWithTabs.tscn" id="2_qvrrd"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/CaptureFocus.gd" id="4_l1ebe"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/MusicPlayers/BackgroundMusicPlayer.tscn" id="4_w8sbm"]
 [ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/UISoundController.gd" id="6_bs342"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rapru"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 0.690196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjbtt"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 0.913725)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,6 +28,7 @@ credits_packed_scene = ExtResource("3_5dhvp")
 script = ExtResource("6_bs342")
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_w8sbm")]
+bus = &"Master"
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -65,20 +72,26 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/margin_top = 16
 
+[node name="Panel" type="Panel" parent="MenuContainer/VBoxContainer/TitlesMargin"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rapru")
+
 [node name="TitlesContainer" type="VBoxContainer" parent="MenuContainer/VBoxContainer/TitlesMargin"]
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Title"
+text = "Trait Tycoon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SubTitle" type="Label" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Subtitle"
+text = "by crab on fire"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -100,12 +113,14 @@ script = ExtResource("4_l1ebe")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjbtt")
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjbtt")
 text = "Options
 "
 
@@ -113,12 +128,14 @@ text = "Options
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjbtt")
 text = "Credits"
 
 [node name="ExitButton" type="Button" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bjbtt")
 text = "Exit"
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]

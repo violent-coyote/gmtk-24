@@ -1,8 +1,68 @@
-[gd_scene load_steps=27 format=3 uid="uid://8pd03t4bx574"]
+[gd_scene load_steps=35 format=3 uid="uid://8pd03t4bx574"]
 
 [ext_resource type="PackedScene" uid="uid://daix2ixjp0erh" path="res://scenes/GameScene/Game/unit_base.tscn" id="1_ctym0"]
 [ext_resource type="PackedScene" uid="uid://bid27wf21e2o8" path="res://scenes/GameScene/GameUI.tscn" id="1_dnn8v"]
 [ext_resource type="Script" path="res://scripts/state/game_manager.gd" id="1_ik5x7"]
+[ext_resource type="Script" path="res://scripts/bobbing_camera.gd" id="3_fyrwg"]
+[ext_resource type="PackedScene" uid="uid://d3b5txjo85c1m" path="res://assets/images/palm.glb" id="3_o5agh"]
+[ext_resource type="PackedScene" path="res://scenes/GameScene/Levels/bush.tscn" id="4_7lqfu"]
+[ext_resource type="PackedScene" uid="uid://cdqukrqaywu2b" path="res://assets/images/cloud.glb" id="5_gbvn6"]
+[ext_resource type="PackedScene" uid="uid://bf47f72n1q0y4" path="res://assets/images/purplegrass.glb" id="6_r53ku"]
+[ext_resource type="Texture2D" uid="uid://4pkcqcu10bmg" path="res://assets/images/pyramid.png" id="7_p4xss"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_euyp7"]
+frequency = 0.0152
+fractal_lacunarity = 2.66
+fractal_gain = 1.15
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v4xu5"]
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ab2ul"]
+seamless = true
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tnas"]
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow6pu"]
+invert = true
+noise = SubResource("FastNoiseLite_euyp7")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_egmbt"]
+resource_local_to_scene = true
+frames = 4
+speed_scale = -0.5
+frame_0/texture = SubResource("NoiseTexture2D_v4xu5")
+frame_1/texture = SubResource("NoiseTexture2D_ab2ul")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("NoiseTexture2D_7tnas")
+frame_2/duration = 1.0
+frame_3/texture = SubResource("NoiseTexture2D_ow6pu")
+frame_3/duration = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5rbfq"]
+noise_type = 2
+frequency = 0.0618
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oi83l"]
+as_normal_map = true
+bump_strength = 23.5
+noise = SubResource("FastNoiseLite_5rbfq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qv1j"]
+albedo_color = Color(0.0935996, 0.359171, 0.702151, 1)
+albedo_texture = SubResource("AnimatedTexture_egmbt")
+metallic = 0.08
+metallic_specular = 0.2
+normal_enabled = true
+normal_scale = 3.33067e-16
+normal_texture = SubResource("NoiseTexture2D_oi83l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uig51"]
+uv2_padding = 2.45
+size = Vector2(30, 30)
+subdivide_depth = 30
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -100,59 +160,19 @@ volumetric_fog_temporal_reprojection_enabled = false
 auto_exposure_enabled = true
 dof_blur_near_distance = 0.3
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_euyp7"]
-frequency = 0.0152
-fractal_lacunarity = 2.66
-fractal_gain = 1.15
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("7_p4xss")
+uv1_scale = Vector3(1.57, 1.57, 1.57)
+uv1_offset = Vector3(0.12, 0.01, 0.76)
+disable_receive_shadows = true
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v4xu5"]
-noise = SubResource("FastNoiseLite_euyp7")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ab2ul"]
-seamless = true
-noise = SubResource("FastNoiseLite_euyp7")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tnas"]
-noise = SubResource("FastNoiseLite_euyp7")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow6pu"]
-invert = true
-noise = SubResource("FastNoiseLite_euyp7")
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_egmbt"]
-resource_local_to_scene = true
-frames = 4
-speed_scale = -0.5
-frame_0/texture = SubResource("NoiseTexture2D_v4xu5")
-frame_1/texture = SubResource("NoiseTexture2D_ab2ul")
-frame_1/duration = 1.0
-frame_2/texture = SubResource("NoiseTexture2D_7tnas")
-frame_2/duration = 1.0
-frame_3/texture = SubResource("NoiseTexture2D_ow6pu")
-frame_3/duration = 1.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5rbfq"]
-noise_type = 2
-frequency = 0.0618
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oi83l"]
-as_normal_map = true
-bump_strength = 23.5
-noise = SubResource("FastNoiseLite_5rbfq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qv1j"]
-albedo_color = Color(0.0935996, 0.359171, 0.702151, 1)
-albedo_texture = SubResource("AnimatedTexture_egmbt")
-metallic = 0.08
-metallic_specular = 0.2
-normal_enabled = true
-normal_scale = 3.33067e-16
-normal_texture = SubResource("NoiseTexture2D_oi83l")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_uig51"]
-uv2_padding = 2.45
-size = Vector2(30, 30)
-subdivide_depth = 30
+[sub_resource type="PrismMesh" id="PrismMesh_id68b"]
+lightmap_size_hint = Vector2i(11, 18)
+size = Vector3(10, 10, 0.53)
 
 [sub_resource type="Gradient" id="Gradient_myybc"]
 offsets = PackedFloat32Array(0.514768, 1)
@@ -208,13 +228,21 @@ cap_bottom = false
 [node name="Scene" type="Node3D" parent="World3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
 
+[node name="swap water" type="MeshInstance3D" parent="World3D/Scene"]
+transform = Transform3D(-4, -3.20349e-09, -3.49457e-07, 0, 0.999328, -0.146575, 3.49691e-07, -0.0366437, -3.99732, 0.75553, 1.75886, 48.689)
+material_override = SubResource("StandardMaterial3D_7qv1j")
+mesh = SubResource("PlaneMesh_uig51")
+
+[node name="Scene" type="Node3D" parent="World3D/Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0252856, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World3D/Scene"]
 environment = SubResource("Environment_rgouf")
 camera_attributes = SubResource("CameraAttributesPractical_ed31u")
 
 [node name="overhead" type="DirectionalLight3D" parent="World3D/Scene/WorldEnvironment"]
 transform = Transform3D(-0.391652, -0.836611, -0.383002, 0.792672, -0.518146, 0.32124, -0.467204, -0.17778, 0.866092, 10.5567, 20.1427, 66.7191)
-light_energy = 3.463
+light_energy = 5.611
 light_indirect_energy = 4.003
 light_volumetric_fog_energy = 2.812
 shadow_enabled = true
@@ -230,183 +258,261 @@ light_energy = 0.0
 light_indirect_energy = 0.111
 shadow_enabled = true
 shadow_transmittance_bias = 1.52
-omni_range = 25.171
-omni_attenuation = -1.343
+omni_range = 2.044
+omni_attenuation = -6.5
 
 [node name="directional_glow" type="DirectionalLight3D" parent="World3D/Scene/WorldEnvironment"]
 transform = Transform3D(0.437238, -0.486033, -0.7567, 0.878326, 0.411619, 0.243131, 0.193303, -0.770935, 0.606872, -7.03881, 8.14783, 7.63566)
-light_energy = 1.76
-light_indirect_energy = 1.57
-light_volumetric_fog_energy = 0.67
+light_energy = 0.251
+light_indirect_energy = 1.51
+light_volumetric_fog_energy = 0.61
 shadow_enabled = true
-directional_shadow_mode = 0
 directional_shadow_split_2 = 0.0
 directional_shadow_split_3 = 0.0
 directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 0.0
 directional_shadow_pancake_size = 0.0
-sky_mode = 1
-
-[node name="swap water" type="MeshInstance3D" parent="World3D/Scene"]
-transform = Transform3D(-4, -3.20349e-09, -3.49457e-07, 0, 0.999328, -0.146575, 3.49691e-07, -0.0366437, -3.99732, 0.75553, 1.75886, 48.689)
-material_override = SubResource("StandardMaterial3D_7qv1j")
-mesh = SubResource("PlaneMesh_uig51")
-
-[node name="hexes" type="Node3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00226057, -0.014471, 0)
-
-[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/hexes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="hexes2" type="Node3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, 0.0717779, 2.1667)
-
-[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/hexes2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
-mesh = SubResource("CylinderMesh_ttr31")
-skeleton = NodePath("../../WorldEnvironment")
-
-[node name="CharacterBody3D" parent="World3D/Scene" instance=ExtResource("1_ctym0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774417, 1.17472, 1.47552)
 
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(-1, 1.56314e-08, -8.6014e-08, -1.21986e-08, 0.94931, 0.31434, 8.65675e-08, 0.31434, -0.94931, 0, 1.80266, -3.6786)
+transform = Transform3D(-1, 1.56314e-08, -8.60139e-08, -2.04114e-08, 0.914946, 0.403577, 8.50065e-08, 0.403577, -0.914946, -0.171505, 1.80266, -4.12257)
+script = ExtResource("3_fyrwg")
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.0370717, -0.714934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488464, 0.151245, -0.714934)
 visible = false
 use_collision = true
 size = Vector3(8.60828, 0.1, 6.8446)
+
+[node name="Environment" type="Node3D" parent="World3D/Scene"]
+
+[node name="palm2" parent="World3D/Scene/Environment" instance=ExtResource("3_o5agh")]
+transform = Transform3D(0.291201, 0, 4.7611, 0, 4.77, 0, -4.7611, 0, 0.291201, 6.31571, -0.0252856, 6.22998)
+
+[node name="bush" parent="World3D/Scene/Environment" instance=ExtResource("4_7lqfu")]
+transform = Transform3D(2.41411, 0, 1.53352, 0, 2.86, 0, -1.53352, 0, 2.41411, 2.55017, -0.113317, 5.36978)
+
+[node name="cloud2" parent="World3D/Scene/Environment" instance=ExtResource("5_gbvn6")]
+transform = Transform3D(0.955256, 0, -8.60715, 0, 8.66, 0, 8.60715, 0, 0.955256, 3.59506, 5.955, 26.5729)
+
+[node name="purplegrass" parent="World3D/Scene/Environment" instance=ExtResource("6_r53ku")]
+transform = Transform3D(-1.28943, 0, 3.15681, 0, 3.41, 0, -3.15681, 0, -1.28943, 4.11276, 0.406381, 7.88553)
+
+[node name="PyramidMeshInstance3D" type="MeshInstance3D" parent="World3D/Scene/Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.655944, 0, 0, 0, 1, -0.905, 2.79296, 19.1673)
+material_override = SubResource("StandardMaterial3D_edwd0")
+mesh = SubResource("PrismMesh_id68b")
+skeleton = NodePath("")
+
+[node name="Hexes" type="Node3D" parent="World3D/Scene"]
+
+[node name="hexes" type="Node3D" parent="World3D/Scene/Hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00226057, -0.014471, 0)
+
+[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt12" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26467, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt15" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36203, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt16" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -1.52808)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt17" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -0.0442742)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt18" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70735, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt21" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83012, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt22" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0545537, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt23" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0545537, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt24" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924074, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt25" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80378, -0.0020175, -3.00205)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt26" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23945, -0.0020175, -2.25118)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt13" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500132, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt14" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389211, -0.0020175, -2.24901)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="hexes2" type="Node3D" parent="World3D/Scene/Hexes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325587, -0.0161006, 2.1667)
+
+[node name="Dirt19" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt5" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517153, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt4" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt3" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt2" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -1.49878)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt6" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837633, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt7" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81141, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt8" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922067, -0.0020175, -0.0467979)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt20" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436861, 0, -0.743128)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt9" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400772, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt10" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24827, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt11" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35893, -0.0020175, -0.789926)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="Dirt" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2788, -0.00143531, -0.805637)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
+
+[node name="ground plan13" type="MeshInstance3D" parent="World3D/Scene/Hexes/hexes2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.766, -0.00143531, -2.43636)
+mesh = SubResource("CylinderMesh_ttr31")
+skeleton = NodePath("")
 
 [node name="Services" type="Node" parent="."]
 

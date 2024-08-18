@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://daix2ixjp0erh"]
+[gd_scene load_steps=21 format=3 uid="uid://daix2ixjp0erh"]
 
 [ext_resource type="Script" path="res://scripts/units/unit.gd" id="1_1lbcc"]
 [ext_resource type="SpineAtlasResource" uid="uid://dt4ifanypyhyl" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.atlas" id="2_cv1s8"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://bwdr7lvojww32" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.skel" id="3_t6hkd"]
+[ext_resource type="Texture2D" uid="uid://c7nx7l6n14av4" path="res://assets/images/cm/rect1.png" id="4_qw7yu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ss718"]
 viewport_path = NodePath("SpineSprite3D/SubViewport")
@@ -34,7 +35,7 @@ skeleton_file_res = ExtResource("3_t6hkd")
 default_mix = 0.1
 animation_mixes = [SubResource("SpineAnimationMix_bahkd"), SubResource("SpineAnimationMix_1l6k8")]
 
-[sub_resource type="Animation" id="Animation_mxjdy"]
+[sub_resource type="Animation" id="Animation_ra5jq"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -62,7 +63,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_1nbwp"]
+[sub_resource type="Animation" id="Animation_83il0"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -90,7 +91,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_lcl7y"]
+[sub_resource type="Animation" id="Animation_i4p66"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -118,7 +119,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_m2n8l"]
+[sub_resource type="Animation" id="Animation_op3qw"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -146,7 +147,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_02mdx"]
+[sub_resource type="Animation" id="Animation_r4ra3"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -174,18 +175,18 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wiia3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okj72"]
 _data = {
-"-- Empty --": SubResource("Animation_02mdx"),
-"RESET": SubResource("Animation_02mdx"),
-"happy": SubResource("Animation_1nbwp"),
-"happy_looped": SubResource("Animation_mxjdy"),
-"sad": SubResource("Animation_m2n8l"),
-"sad_looped": SubResource("Animation_lcl7y")
+"-- Empty --": SubResource("Animation_r4ra3"),
+"RESET": SubResource("Animation_r4ra3"),
+"happy": SubResource("Animation_83il0"),
+"happy_looped": SubResource("Animation_ra5jq"),
+"sad": SubResource("Animation_op3qw"),
+"sad_looped": SubResource("Animation_i4p66")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fbe5"]
-size = Vector3(1, 1.22876, 0.380722)
+size = Vector3(0.411865, 0.587219, 0.380722)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p5htl"]
 emission_shape_scale = Vector3(0.1, 0.1, 0.1)
@@ -246,11 +247,11 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="SpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_wiia3")
+"": SubResource("AnimationLibrary_okj72")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11438, -0.127708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123291, -0.237579, -0.127708)
 shape = SubResource("BoxShape3D_7fbe5")
 
 [node name="LoveParticles3D" type="GPUParticles3D" parent="."]
@@ -260,5 +261,17 @@ amount = 80
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_p5htl")
 draw_pass_1 = SubResource("TextMesh_035po")
+
+[node name="DialogBoxSprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.6, 0, -3.01992e-08, 0, 0.2, 0, 9.05975e-08, 0, -0.2, -0.801838, 0.524727, -0.00436813)
+texture = ExtResource("4_qw7yu")
+
+[node name="Label3D" type="Label3D" parent="DialogBoxSprite3D"]
+transform = Transform3D(0.333333, 0, -2.11909e-08, 0, 1, 0, 6.35731e-08, 0, 1, 0.00646722, -0.0644331, 0.224898)
+modulate = Color(0, 0, 0, 1)
+text = "lorem ipsum"
+font_size = 128
+autowrap_mode = 3
+width = 1800.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

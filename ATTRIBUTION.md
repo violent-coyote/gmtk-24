@@ -2,17 +2,9 @@
 ## Collaborators
 
 ### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
-
-
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+[alexrc](https://www.crabonfire.com)
+[cm](https://www.carlos-michael.com)
+[paulb](https://www.crabonfire.com)
 
 
 ## Tools
