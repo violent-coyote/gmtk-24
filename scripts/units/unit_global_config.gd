@@ -34,7 +34,13 @@ static var list_of_names = [
 	"Chef",
 	"Salmon Sally",
 	"Catlady",
-	"Small Potatoes"
+	"Small Potatoes",
+	"Kel-C",
+	"Leu",
+	"Animal",
+	"Brie",
+	"no comment",
+	"oscar on fire"
 ]
 ## FIXME this should be a stateful list where it checks if the objective is complete
 static var list_of_objectives = [

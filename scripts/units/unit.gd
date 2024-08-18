@@ -145,7 +145,7 @@ func randomize_personality():
 func pretty_print_personality():
 	busy = true
 	# try godot manager
-	var stats = "Name: " + personality_data["name"] + "\n" + "Type: " + pretty_print_unit_type_to_string(personality_data["unit_type"]) + "\n" 
+	var stats = "I'm " + personality_data["name"] + " the "  + pretty_print_unit_type_to_string(personality_data["unit_type"]) + "\n" 
 	# assemble descriptive string based on values of stats
 	# find max stat
 	var max_stat = UGC.StatPrimitives.HEALTH
@@ -158,13 +158,18 @@ func pretty_print_personality():
 	# stats += "Social: " + str(personality_data["stats"][UGC.StatPrimitives.SOCIAL]) + "\n"
 	# stats += "Happiness: " + str(personality_data["stats"][UGC.StatPrimitives.HAPPINESS]) + "\n"
 
-	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(personality_data["stats"][max_stat]) + "\n"
+	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(round_to_dec(personality_data["stats"][max_stat], 2)) + "\n"
+	
+	for stat in UGC.StatPrimitives.values():
+		if stat != max_stat:
+			stats += pretty_print_trait_to_string(stat) + ": " + str(round_to_dec(personality_data["stats"][stat], 2)) + "\n"
+
 	dialog_box_label.text = stats
 	dialog_box.show()
 	change_state(idle_state)
 
 	# wait 8 seconds, then hide the dialogue box
-	await get_tree().create_timer(8.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	dialog_box.hide()
 	busy = false
 
@@ -173,6 +178,14 @@ func pretty_print_personality():
 	# print("Stats: ")
 	# for stat in UGC.StatPrimitives.values():
 	# 	print(pretty_print_trait_to_string(stat), ": ", personality_data["stats"][stat])
+
+## https://forum.godotengine.org/t/how-to-round-to-a-specific-decimal-place/27552/3?u=carlosmichael
+## round_to_dec(1.352, 2) #rounds to the 2nd decimal digit. 1.35
+func round_to_dec(num : float, digit : int):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+	
+
 func pretty_print_unit_type_to_string(unit_type: UGC.UnitTypes):
 	match unit_type:
 		UGC.UnitTypes.CAT:
@@ -201,6 +214,7 @@ func adjust_stat(stat: UGC.StatPrimitives, amount: float):
 	personality_data["stats"][stat] += amount
 	# clamp to -1 to 1
 	personality_data["stats"][stat] = clampf(personality_data["stats"][stat], -1.0, 1.0)
+	print(personality_data["stats"])
 	update_skeleton_scale()
 
 func handle_collision(collision: KinematicCollision3D):

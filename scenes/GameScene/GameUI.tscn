@@ -145,39 +145,47 @@ grow_vertical = 0
 [node name="Button" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "throw rock"
 
 [node name="Button2" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "throw skull"
+flat = true
 
 [node name="Button3" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "make it rain"
 
 [node name="Button4" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "make it reign"
 
 [node name="Button5" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "optional"
 
 [node name="Button6" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+action_mode = 0
 text = "party time"
 
 [node name="Button7" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+action_mode = 0
 text = "drama"
 
 [node name="Button8" type="Button" parent="Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+action_mode = 0
 text = "new album"

@@ -20,6 +20,9 @@ func _ready():
 
 	# game_ui.add_button.pressed.connect(instantiate_unit)
 	game_ui.update_all_labels()
+
+
+
 	instantiate_unit()
 	await get_tree().create_timer(1.0).timeout
 	instantiate_unit()
@@ -27,6 +30,18 @@ func _ready():
 	instantiate_unit()
 	instantiate_unit()
 	instantiate_unit()
+
+
+
+func init_buttons():
+	game_ui.button.pressed.connect(throw_rock)
+	game_ui.button2.pressed.connect(throw_skull)
+	game_ui.button3.pressed.connect(make_it_rain)
+	game_ui.button4.pressed.connect(make_it_reign)
+	game_ui.button5.pressed.connect(optional)
+	game_ui.button6.pressed.connect(party_time)
+	game_ui.button7.pressed.connect(drama)
+	game_ui.button8.pressed.connect(new_album)
 
 func check_objective_completion() -> Array[Unit]:
 	var units : Array[Unit]= []
@@ -47,7 +62,7 @@ func check_objective_completion() -> Array[Unit]:
 			unit.queue_free()
 			if index != -1:
 				currently_spawned_units.remove_at(index)
-				
+
 			instantiate_unit()
 		# currently_spawned_units.erase(units[0])
 		# units[0].queue_free()
@@ -61,8 +76,7 @@ func _check_specific_objective_completion(objective_index : int) -> Unit:
 	for unit in currently_spawned_units:
 		if unit.personality_data["unit_type"] == objective["unit_type"]:
 			if unit.personality_data["stats"][objective["trait"]] >= objective["target"]:
-				print("Objective complete!")
-				game_ui.objective_to_label(objective_index).text = "Objective Complete!"
+				game_ui.objective_to_label(objective_index).text = unit.personality_data["name"] + "completed the objective!"
 				stateful_objectives[objective_index]["completed"] = true
 				return unit
 	return null
@@ -70,7 +84,41 @@ func _check_specific_objective_completion(objective_index : int) -> Unit:
 
 func affect_all_unit_event(trait_affected : UGC.StatPrimitives, amount : float):
 	for unit in currently_spawned_units:
-		unit.personality_data["stats"][trait_affected] += amount
+		unit.adjust_stat(trait_affected, amount)
+
+func throw_rock():
+	# instantiate rock
+	pass
+
+func throw_skull():
+	# instantiate skull
+	pass
+
+func make_it_rain():
+	# instantiate particle fx
+	pass
+
+func make_it_reign():
+	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, -.1)
+	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, -.5)
+	affect_all_unit_event(UGC.StatPrimitives.HUNGER, .7)
+	pass
+
+func optional():
+
+	pass
+
+func party_time():
+	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .1)
+	pass
+
+func drama():
+	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, -.5)
+	pass
+
+func new_album():
+	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, .5)
+	pass
 
 func instantiate_unit():
 	if currently_spawned_units.size() >= MAX_UNITS:

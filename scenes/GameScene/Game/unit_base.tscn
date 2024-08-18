@@ -650,6 +650,6 @@ modulate = Color(0, 0, 0, 1)
 text = "lorem ipsum"
 font_size = 128
 autowrap_mode = 3
-width = 1800.0
+width = 2200.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
