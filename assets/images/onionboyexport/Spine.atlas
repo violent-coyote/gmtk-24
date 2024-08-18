@@ -1,0 +1,45 @@
+Spine.png
+size:251,530
+filter:Linear,Linear
+pma:true
+cheek left
+bounds:58,33,28,28
+offsets:3,5,35,37
+cheek right
+bounds:88,35,26,30
+offsets:5,5,33,40
+rotate:90
+left eye
+bounds:58,63,50,56
+offsets:2,4,54,62
+rotate:90
+left leg
+bounds:2,210,107,123
+offsets:2,2,112,126
+rotate:90
+mouth
+bounds:125,2,123,67
+offsets:2,2,127,71
+rotate:90
+nose
+bounds:194,26,53,99
+right arm
+bounds:127,127,93,122
+offsets:2,1,97,124
+rotate:90
+right eye
+bounds:2,51,62,54
+offsets:1,2,65,58
+rotate:90
+right leg
+bounds:127,222,95,122
+offsets:3,3,101,126
+rotate:90
+slice1
+bounds:2,319,209,241
+offsets:2,2,213,246
+rotate:90
+slice2
+bounds:2,115,93,121
+offsets:2,2,97,124
+rotate:90
