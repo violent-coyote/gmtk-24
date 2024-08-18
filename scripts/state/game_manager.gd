@@ -25,6 +25,8 @@ func _ready():
 	instantiate_unit()
 	await get_tree().create_timer(1.0).timeout
 	instantiate_unit()
+	instantiate_unit()
+	instantiate_unit()
 
 func check_objective_completion() -> Array[Unit]:
 	var units : Array[Unit]= []
@@ -38,6 +40,17 @@ func check_objective_completion() -> Array[Unit]:
 	# if units[0]:
 		# currently_spawned_units.erase(unit)
 		# unit.queue_free()
+	if units.size() > 0:
+		for unit in units:
+			# find each index of unit in the list of currently spawned units
+			var index = currently_spawned_units.find(unit)
+			unit.queue_free()
+			if index != -1:
+				currently_spawned_units.remove_at(index)
+				
+			instantiate_unit()
+		# currently_spawned_units.erase(units[0])
+		# units[0].queue_free()
 	return units
 	
 
