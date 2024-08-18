@@ -1,0 +1,28 @@
+Spine.png
+size:628,251
+filter:Linear,Linear
+pma:true
+eyebrowleft
+bounds:426,10,62,43
+eyebrowright
+bounds:490,10,43,38
+rotate:90
+eyeleft
+bounds:294,49,74,69
+eyeright
+bounds:370,49,54,69
+head
+bounds:2,2,247,290
+rotate:90
+left leg
+bounds:427,55,105,194
+right leg
+bounds:427,55,105,194
+leftarm
+bounds:294,120,129,131
+rotate:90
+mouth
+bounds:534,2,92,91
+rightarm
+bounds:534,95,154,89
+rotate:90
