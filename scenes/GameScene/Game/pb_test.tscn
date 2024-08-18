@@ -2,13 +2,13 @@
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
-[ext_resource type="Texture2D" uid="uid://dbbit8u7qfvfv" path="res://assets/images/pyramid.png" id="5_val8w"]
-[ext_resource type="PackedScene" uid="uid://caxmlv1tah0p6" path="res://assets/images/palm.glb" id="6_q2fpy"]
+[ext_resource type="Texture2D" uid="uid://bi2e3hybfolmq" path="res://assets/images/pyramid.png" id="5_val8w"]
+[ext_resource type="PackedScene" uid="uid://djdu357phys4c" path="res://assets/images/palm.glb" id="6_q2fpy"]
 [ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
-[ext_resource type="PackedScene" uid="uid://s2advrvqm1yu" path="res://assets/images/cloud.glb" id="8_byqvp"]
+[ext_resource type="PackedScene" uid="uid://dkliw1s1ctaqn" path="res://assets/images/cloud.glb" id="8_byqvp"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cttd8mh8n8hvp" path="res://assets/images/onionboyexport/onion.tres" id="9_hcdr6"]
-[ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
-[ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
+[ext_resource type="PackedScene" uid="uid://bw3dh1l84yupv" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
+[ext_resource type="Texture2D" uid="uid://dt1yrgtfi56av" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -294,7 +294,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-[sub_resource type="Animation" id="Animation_n2i0n"]
+[sub_resource type="Animation" id="Animation_edovw"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -322,7 +322,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_fwbnu"]
+[sub_resource type="Animation" id="Animation_gfk14"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -350,7 +350,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_kywnx"]
+[sub_resource type="Animation" id="Animation_x624b"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -378,7 +378,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6d748"]
+[sub_resource type="Animation" id="Animation_q8u4p"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -406,7 +406,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_48cw8"]
+[sub_resource type="Animation" id="Animation_shckj"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -434,14 +434,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sirsk"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gl1bp"]
 _data = {
-"-- Empty --": SubResource("Animation_48cw8"),
-"RESET": SubResource("Animation_48cw8"),
-"happy": SubResource("Animation_fwbnu"),
-"happy_looped": SubResource("Animation_n2i0n"),
-"sad": SubResource("Animation_6d748"),
-"sad_looped": SubResource("Animation_kywnx")
+"-- Empty --": SubResource("Animation_shckj"),
+"RESET": SubResource("Animation_shckj"),
+"happy": SubResource("Animation_gfk14"),
+"happy_looped": SubResource("Animation_edovw"),
+"sad": SubResource("Animation_q8u4p"),
+"sad_looped": SubResource("Animation_x624b")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
@@ -702,7 +702,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_sirsk")
+"": SubResource("AnimationLibrary_gl1bp")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

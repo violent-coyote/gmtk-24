@@ -129,14 +129,14 @@ func randomize_personality():
 		stats[UGC.StatPrimitives.HEALTH] = 0.2
 		onion_spine_sprite.get_parent().get_parent().show()
 		if !is_web:
-			crab_sprite3d.hide()
+			onion_sprite3d.hide()
 		spine_sprite = onion_spine_sprite
 		print('displaying onion')
 	if unit_type == UGC.UnitTypes.CRAB:
 		stats[UGC.StatPrimitives.HUNGER] = 0.2
 		crab_spine_sprite.get_parent().get_parent().show()
 		if !is_web:
-			onion_sprite3d.hide()
+			crab_sprite3d.hide()
 		spine_sprite = crab_spine_sprite
 		print('displaying crab')
 
