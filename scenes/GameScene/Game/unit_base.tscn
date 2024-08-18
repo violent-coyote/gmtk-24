@@ -38,7 +38,7 @@ skeleton_file_res = ExtResource("3_t6hkd")
 default_mix = 0.1
 animation_mixes = [SubResource("SpineAnimationMix_bahkd"), SubResource("SpineAnimationMix_1l6k8")]
 
-[sub_resource type="Animation" id="Animation_lxqlh"]
+[sub_resource type="Animation" id="Animation_wcm52"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -66,7 +66,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_5t76s"]
+[sub_resource type="Animation" id="Animation_gph2k"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -94,7 +94,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_yxlfl"]
+[sub_resource type="Animation" id="Animation_1joqq"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -122,7 +122,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_i3g0j"]
+[sub_resource type="Animation" id="Animation_q2taq"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -150,7 +150,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_knqry"]
+[sub_resource type="Animation" id="Animation_88hpy"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -178,17 +178,17 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qgr0s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lsrag"]
 _data = {
-"-- Empty --": SubResource("Animation_knqry"),
-"RESET": SubResource("Animation_knqry"),
-"happy": SubResource("Animation_5t76s"),
-"happy_looped": SubResource("Animation_lxqlh"),
-"sad": SubResource("Animation_i3g0j"),
-"sad_looped": SubResource("Animation_yxlfl")
+"-- Empty --": SubResource("Animation_88hpy"),
+"RESET": SubResource("Animation_88hpy"),
+"happy": SubResource("Animation_gph2k"),
+"happy_looped": SubResource("Animation_wcm52"),
+"sad": SubResource("Animation_q2taq"),
+"sad_looped": SubResource("Animation_1joqq")
 }
 
-[sub_resource type="Animation" id="Animation_apnk8"]
+[sub_resource type="Animation" id="Animation_mdxin"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -216,7 +216,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_4568i"]
+[sub_resource type="Animation" id="Animation_uhq6w"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -244,7 +244,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_gi8jr"]
+[sub_resource type="Animation" id="Animation_c57so"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -272,7 +272,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_vgbu8"]
+[sub_resource type="Animation" id="Animation_xh8e0"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -300,7 +300,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_xea33"]
+[sub_resource type="Animation" id="Animation_6elst"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -328,17 +328,17 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_887px"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpxp6"]
 _data = {
-"-- Empty --": SubResource("Animation_xea33"),
-"RESET": SubResource("Animation_xea33"),
-"happy": SubResource("Animation_4568i"),
-"happy_looped": SubResource("Animation_apnk8"),
-"sad": SubResource("Animation_vgbu8"),
-"sad_looped": SubResource("Animation_gi8jr")
+"-- Empty --": SubResource("Animation_6elst"),
+"RESET": SubResource("Animation_6elst"),
+"happy": SubResource("Animation_uhq6w"),
+"happy_looped": SubResource("Animation_mdxin"),
+"sad": SubResource("Animation_xh8e0"),
+"sad_looped": SubResource("Animation_c57so")
 }
 
-[sub_resource type="Animation" id="Animation_syivi"]
+[sub_resource type="Animation" id="Animation_hmp0t"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -366,7 +366,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_uyw7n"]
+[sub_resource type="Animation" id="Animation_5c2k0"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -394,7 +394,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_j67my"]
+[sub_resource type="Animation" id="Animation_c3fjn"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -422,7 +422,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_rn4yf"]
+[sub_resource type="Animation" id="Animation_vpm51"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -450,7 +450,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_0atdr"]
+[sub_resource type="Animation" id="Animation_8jrib"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -478,14 +478,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0bc5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_du5hb"]
 _data = {
-"-- Empty --": SubResource("Animation_0atdr"),
-"RESET": SubResource("Animation_0atdr"),
-"happy": SubResource("Animation_uyw7n"),
-"happy_looped": SubResource("Animation_syivi"),
-"sad": SubResource("Animation_rn4yf"),
-"sad_looped": SubResource("Animation_j67my")
+"-- Empty --": SubResource("Animation_8jrib"),
+"RESET": SubResource("Animation_8jrib"),
+"happy": SubResource("Animation_5c2k0"),
+"happy_looped": SubResource("Animation_hmp0t"),
+"sad": SubResource("Animation_vpm51"),
+"sad_looped": SubResource("Animation_c3fjn")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fbe5"]
@@ -555,7 +555,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="CatSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_qgr0s")
+"": SubResource("AnimationLibrary_lsrag")
 }
 
 [node name="OnionSpineSprite3D" type="MeshInstance3D" parent="."]
@@ -590,7 +590,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="OnionSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_887px")
+"": SubResource("AnimationLibrary_tpxp6")
 }
 
 [node name="CrabSpineSprite3D" type="MeshInstance3D" parent="."]
@@ -625,7 +625,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="CrabSpineSprite3D/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_j0bc5")
+"": SubResource("AnimationLibrary_du5hb")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
