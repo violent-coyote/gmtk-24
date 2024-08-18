@@ -16,7 +16,7 @@ var kiss_state: KissState
 var busy := false
 
 
-const MAX_SCALE = 15
+const MAX_SCALE = 1.5
 
 ## Animations
 @onready var love_fx = $LoveParticles3D
@@ -59,13 +59,7 @@ func _ready():
 	randomize_personality()
 	dialog_box.hide()
 
-	# var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
-	# var spine_skin := skeleton.get_skin()
-	# spine_skin.
-	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
-	# skeleton.get_root_bone().set_scale_x(MAX_SCALE)
-	# skeleton.get_root_bone().set_scale_y(MAX_SCALE)
-	# scale_slot("flame hair", MAX_SCALE)
+	update_skeleton_scale()
 
 
 func _process(delta):
@@ -81,6 +75,14 @@ func _process(delta):
 		handle_collision(collision)
 	
 	move_and_slide()
+
+func update_skeleton_scale():
+	var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
+	# var spine_skin := skeleton.get_skin()
+	# spine_skin.
+	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
+	skeleton.get_root_bone().set_scale_x(clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+	skeleton.get_root_bone().set_scale_y(clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
 
 func randomize_personality():
 	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
@@ -159,10 +161,8 @@ func add_unit_type_bias():
 func adjust_stat(stat: UGC.StatPrimitives, amount: float):
 	personality_data["stats"][stat] += amount
 	# clamp to -1 to 1
-	if personality_data["stats"][stat] > 1:
-		personality_data["stats"][stat] = 1
-	elif personality_data["stats"][stat] < -1:
-		personality_data["stats"][stat] = -1
+	clamp(personality_data["stats"][stat], -1, 1)
+	update_skeleton_scale()
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
@@ -264,6 +264,7 @@ class KissState extends State:
 		unit.spine_sprite.get_animation_state().set_animation("happy",true,0)
 		# adjust stat for happiness by + 0.1
 		# adjust stat for social by + 0.2
+		unit.adjust_stat(UGC.StatPrimitives.HEALTH, 0.3)
 		unit.adjust_stat(UGC.StatPrimitives.HAPPINESS, 0.1)
 		unit.adjust_stat(UGC.StatPrimitives.SOCIAL, 0.2)
 

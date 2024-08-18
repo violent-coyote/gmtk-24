@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" load_steps=5 format=3 uid="uid://drehrvnjbtjwl"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://dt4ifanypyhyl" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.atlas" id="1_junqy"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://bwdr7lvojww32" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.skel" id="2_eiaej"]
+[ext_resource type="SpineAtlasResource" uid="uid://cxsw04nje02lj" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.atlas" id="1_junqy"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://5lngm36a0p0p" path="res://assets/images/skull export/flame rig/v2flamerig/Spine.skel" id="2_eiaej"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_bahkd"]
 from = "happy"
