@@ -20,7 +20,7 @@ func _ready():
 
 	# game_ui.add_button.pressed.connect(instantiate_unit)
 	game_ui.update_all_labels()
-
+	init_buttons()
 
 
 	instantiate_unit()

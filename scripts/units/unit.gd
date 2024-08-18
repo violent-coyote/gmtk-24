@@ -25,6 +25,8 @@ const MAX_SCALE = 1.5
 @onready var crab_spine_sprite : SpineSprite = $CrabSpineSprite3D/SubViewport/SpineSprite
 @onready var cat_spine_sprite : SpineSprite = $CatSpineSprite3D/SubViewport/SpineSprite
 @onready var onion_spine_sprite : SpineSprite = $OnionSpineSprite3D/SubViewport/SpineSprite
+
+@onready var crab_sprite3d : Sprite3D = $CrabSpineSprite3D/Sprite3D
 @onready var spine_sprite : SpineSprite 
 
 # dialog box
@@ -110,6 +112,8 @@ func randomize_personality():
 	## implement unit type bias - cats are social, onions are healthy, and crabs are hungry
 	var unit_type = personality_data["unit_type"]
 	var stats = personality_data["stats"]
+
+	var is_web = OS.has_feature("web")
 
 	if unit_type == UGC.UnitTypes.CAT:
 		# cats are social bias
