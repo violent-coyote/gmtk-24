@@ -274,7 +274,7 @@ directional_shadow_max_distance = 0.0
 directional_shadow_pancake_size = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="World3D/Scene"]
-transform = Transform3D(-1, 1.56314e-08, -8.60139e-08, -2.04114e-08, 0.914946, 0.403577, 8.50065e-08, 0.403577, -0.914946, -0.171505, 1.80266, -4.12257)
+transform = Transform3D(-1, 1.56313e-08, -8.60139e-08, -2.04114e-08, 0.914946, 0.403577, 8.50065e-08, 0.403577, -0.914946, -1.34317, 1.80266, -4.12257)
 script = ExtResource("3_fyrwg")
 
 [node name="Ground" type="CSGBox3D" parent="World3D/Scene"]

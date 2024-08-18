@@ -25,6 +25,10 @@ const MAX_SCALE = 1.5
 @onready var crab_spine_sprite : SpineSprite = $CrabSpineSprite3D/SubViewport/SpineSprite
 @onready var cat_spine_sprite : SpineSprite = $CatSpineSprite3D/SubViewport/SpineSprite
 @onready var onion_spine_sprite : SpineSprite = $OnionSpineSprite3D/SubViewport/SpineSprite
+
+@onready var cat_sprite3d : Sprite3D = $CatSpineSprite3D/Sprite3D
+@onready var onion_sprite3d : Sprite3D = $OnionSpineSprite3D/Sprite3D
+@onready var crab_sprite3d : Sprite3D = $CrabSpineSprite3D/Sprite3D
 @onready var spine_sprite : SpineSprite 
 
 # dialog box
@@ -64,7 +68,7 @@ func _ready():
 	randomize_personality()
 
 
-	spine_sprite.get_animation_state().add_animation("sad",2,true,1)
+	spine_sprite.get_animation_state().add_animation("happy",2,true,1)
 
 	dialog_box.hide()
 
@@ -111,35 +115,30 @@ func randomize_personality():
 	var unit_type = personality_data["unit_type"]
 	var stats = personality_data["stats"]
 
+	var is_web = OS.has_feature("web")
 	if unit_type == UGC.UnitTypes.CAT:
 		# cats are social bias
 		stats[UGC.StatPrimitives.SOCIAL] = 0.2
 		#
 		cat_spine_sprite.get_parent().get_parent().show()
-		# FIXME temporary hide the sprite
-		var subviewport : SubViewport = cat_spine_sprite.get_parent()
-		subviewport.size = Vector2(0,0)
+		if !is_web:
+			cat_sprite3d.hide()
 		spine_sprite = cat_spine_sprite
 		print('displaying cat')
-		# onion_spine_sprite.queue_free()
-		# crab_spine_sprite.queue_free()
 	if unit_type == UGC.UnitTypes.ONION:
 		stats[UGC.StatPrimitives.HEALTH] = 0.2
 		onion_spine_sprite.get_parent().get_parent().show()
-		# FIXME temporary hide the sprite
-		var subviewport : SubViewport = onion_spine_sprite.get_parent()
-		subviewport.size = Vector2(0,0)
+		if !is_web:
+			onion_sprite3d.hide()
 		spine_sprite = onion_spine_sprite
 		print('displaying onion')
-		# cat_spine_sprite.queue_free()
-		# crab_spine_sprite.queue_free()
 	if unit_type == UGC.UnitTypes.CRAB:
 		stats[UGC.StatPrimitives.HUNGER] = 0.2
 		crab_spine_sprite.get_parent().get_parent().show()
+		if !is_web:
+			crab_sprite3d.hide()
 		spine_sprite = crab_spine_sprite
 		print('displaying crab')
-		# onion_spine_sprite.queue_free()
-		# cat_spine_sprite.queue_free()
 
 
 func pretty_print_personality():
