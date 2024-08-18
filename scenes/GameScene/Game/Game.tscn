@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bid27wf21e2o8" path="res://scenes/GameScene/GameUI.tscn" id="1_dnn8v"]
 [ext_resource type="Script" path="res://scripts/state/game_manager.gd" id="1_ik5x7"]
 [ext_resource type="Script" path="res://scripts/bobbing_camera.gd" id="3_fyrwg"]
-[ext_resource type="PackedScene" uid="uid://d3b5txjo85c1m" path="res://assets/images/palm.glb" id="3_o5agh"]
-[ext_resource type="PackedScene" path="res://scenes/GameScene/Levels/bush.tscn" id="4_7lqfu"]
-[ext_resource type="PackedScene" uid="uid://cdqukrqaywu2b" path="res://assets/images/cloud.glb" id="5_gbvn6"]
-[ext_resource type="PackedScene" uid="uid://bf47f72n1q0y4" path="res://assets/images/purplegrass.glb" id="6_r53ku"]
-[ext_resource type="Texture2D" uid="uid://4pkcqcu10bmg" path="res://assets/images/pyramid.png" id="7_p4xss"]
+[ext_resource type="PackedScene" uid="uid://djdu357phys4c" path="res://assets/images/palm.glb" id="3_o5agh"]
+[ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="4_7lqfu"]
+[ext_resource type="PackedScene" uid="uid://dkliw1s1ctaqn" path="res://assets/images/cloud.glb" id="5_gbvn6"]
+[ext_resource type="PackedScene" uid="uid://bw3dh1l84yupv" path="res://assets/images/purplegrass.glb" id="6_r53ku"]
+[ext_resource type="Texture2D" uid="uid://bi2e3hybfolmq" path="res://assets/images/pyramid.png" id="7_p4xss"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_euyp7"]
 frequency = 0.0152
