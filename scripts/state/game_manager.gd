@@ -109,7 +109,7 @@ func optional():
 	pass
 
 func party_time():
-	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .1)
+	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .3)
 	pass
 
 func drama():

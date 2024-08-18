@@ -214,11 +214,13 @@ func adjust_stat(stat: UGC.StatPrimitives, amount: float):
 	personality_data["stats"][stat] += amount
 	# clamp to -1 to 1
 	personality_data["stats"][stat] = clampf(personality_data["stats"][stat], -1.0, 1.0)
-	print(personality_data["stats"])
+	# print(personality_data["stats"])
 	update_skeleton_scale()
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.get_collider()
+	if collider == null:
+		return
 	if collider.is_in_group("rocks"):
 	# 	# stub toe on rocks
 		print("ouch")
@@ -310,11 +312,18 @@ class KissState extends State:
 	var kiss_cooldown_timer = 0.0
 	const KISS_COOLDOWN = 6.0
 
+	const KISS_LIMIT = 2
+	var kiss_count = 0
+
 	func enter():
 		if unit.busy:
 			return
 		unit.velocity = Vector3.ZERO
 		unit.busy = true
+		kiss_count += 1
+		if kiss_count >= KISS_LIMIT:
+			unit.change_state(unit.idle_state)
+			return
 		# print("Entering Kiss State")
 		unit.love_fx.emitting = true
 		if unit.spine_sprite != null:
