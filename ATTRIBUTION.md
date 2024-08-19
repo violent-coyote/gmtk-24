@@ -25,6 +25,11 @@ Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Game-Tem
 Source: [github: Godot-Game-Template](https://github.com/Maaack/Godot-Game-Template)  
 License: [MIT License](LICENSE.txt)  
 
+#### Kenney FPS Game Template
+Author: [Kenney](https://github.com/KenneyNL)
+Source : [github: Starter-Kit-FPS](https://github.com/KenneyNL/Starter-Kit-FPS)
+License: [MIT License](https://github.com/KenneyNL/Starter-Kit-FPS?tab=readme-ov-file#license)
+
 #### Spine Runtimes License Agreement
 Last updated February 20, 2024. Replaces all prior versions.
 
