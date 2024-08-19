@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=62 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
@@ -9,6 +9,7 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cttd8mh8n8hvp" path="res://assets/images/onionboyexport/onion.tres" id="9_hcdr6"]
 [ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bm1ci6ei6lkru" path="res://assets/images/catexport/cat.tres" id="10_dm246"]
+[ext_resource type="Script" path="res://scenes/GameScene/Game/scale.gd" id="10_g8d1n"]
 [ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
@@ -295,7 +296,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-[sub_resource type="Animation" id="Animation_rl1eo"]
+[sub_resource type="Animation" id="Animation_n0jix"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -323,7 +324,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_40g4m"]
+[sub_resource type="Animation" id="Animation_isopc"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -351,7 +352,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_ypjdp"]
+[sub_resource type="Animation" id="Animation_p3t6e"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -379,7 +380,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ydwqd"]
+[sub_resource type="Animation" id="Animation_o8w8d"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -407,7 +408,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_4iflh"]
+[sub_resource type="Animation" id="Animation_jmnaf"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -435,14 +436,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_frfro"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4kv4"]
 _data = {
-"-- Empty --": SubResource("Animation_4iflh"),
-"RESET": SubResource("Animation_4iflh"),
-"happy": SubResource("Animation_40g4m"),
-"happy_looped": SubResource("Animation_rl1eo"),
-"sad": SubResource("Animation_ydwqd"),
-"sad_looped": SubResource("Animation_ypjdp")
+"-- Empty --": SubResource("Animation_jmnaf"),
+"RESET": SubResource("Animation_jmnaf"),
+"happy": SubResource("Animation_isopc"),
+"happy_looped": SubResource("Animation_n0jix"),
+"sad": SubResource("Animation_o8w8d"),
+"sad_looped": SubResource("Animation_p3t6e")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
@@ -717,7 +718,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_frfro")
+"": SubResource("AnimationLibrary_u4kv4")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -764,10 +765,20 @@ mesh = SubResource("QuadMesh_hhwh2")
 transparent_bg = true
 size = Vector2i(1012, 532)
 
-[node name="SpineSprite" type="SpineSprite" parent="cat/SubViewport"]
+[node name="SpineSprite" type="SpineSprite" parent="cat"]
 position = Vector2(562, 476)
 skeleton_data_res = ExtResource("10_dm246")
 preview_skin = "Default"
-preview_animation = "sad"
+preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
+
+[node name="SpineBoneNode" type="SpineBoneNode" parent="cat/SpineSprite"]
+show_behind_parent = true
+position = Vector2(-3.17444, -114.83)
+rotation = -1.5708
+bone_name = "leftarm"
+enabled = false
+script = ExtResource("10_g8d1n")
+spine_node = NodePath("..")
+bone_name = "leftarm"
