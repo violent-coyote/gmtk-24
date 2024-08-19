@@ -16,7 +16,7 @@ var kiss_state: KissState
 var busy := false
 
 
-const MAX_SCALE = 1.5
+const MAX_SCALE = 10 #1.5
 
 ## Animations
 @onready var love_fx = $LoveParticles3D
@@ -97,8 +97,13 @@ func update_skeleton_scale():
 	# var spine_skin := skeleton.get_skin()
 	# spine_skin.
 	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
-	skeleton.get_root_bone().set_scale_x(clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
-	skeleton.get_root_bone().set_scale_y(clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+	
+	var root = skeleton.get_root_bone()
+	var scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
+	root.set_scale_x(scale)
+	root.set_scale_y(scale)
+	
+	print("set scale to: " + str(scale))
 
 func randomize_personality():
 	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
