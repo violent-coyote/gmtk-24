@@ -1,19 +1,38 @@
-[gd_scene load_steps=14 format=4 uid="uid://5dacevfftjro"]
+[gd_scene load_steps=21 format=4 uid="uid://5dacevfftjro"]
 
 [ext_resource type="Texture2D" uid="uid://ckxs7bbr0ugtv" path="res://assets/images/coflogo.png" id="1_pw18m"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kjot8"]
-emission_shape_scale = Vector3(1, 0.91, 1)
+lifetime_randomness = 0.04
+emission_shape_scale = Vector3(1.08, 0.91, 1)
 emission_shape = 2
-emission_sphere_radius = 1.4
+emission_sphere_radius = 1.75
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4tc51"]
+resource_local_to_scene = true
+seed = 470
+frequency = 0.005
+fractal_type = 3
+domain_warp_enabled = true
+domain_warp_fractal_gain = 0.83
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_11nvb"]
+in_3d_space = true
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_4tc51")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb66t"]
+transparency = 1
+blend_mode = 3
 albedo_color = Color(0.258824, 1, 0.254902, 1)
-metallic = 1.0
-metallic_specular = 1.0
-roughness = 0.3
+metallic_specular = 0.0
+roughness = 0.0
 emission = Color(0.279774, 0.000106658, 0.954065, 1)
-emission_energy_multiplier = 1.14
+emission_energy_multiplier = 5.34
+emission_operator = 1
+emission_on_uv2 = true
+emission_texture = SubResource("NoiseTexture2D_11nvb")
 clearcoat_enabled = true
 clearcoat_roughness = 0.0
 
@@ -22,7 +41,7 @@ material = SubResource("StandardMaterial3D_sb66t")
 inner_radius = 0.315
 outer_radius = 0.761
 rings = 3
-ring_segments = 3
+ring_segments = 103
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvl3x"]
 albedo_texture = ExtResource("1_pw18m")
@@ -36,7 +55,6 @@ rim_tint = 0.8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jy7so"]
 material = SubResource("StandardMaterial3D_jvl3x")
-orientation = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kinbu"]
 resource_local_to_scene = true
@@ -60,7 +78,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 albedo_color = Color(0, 1, 1, 1)
-metallic = 0.69
+metallic = 0.19
 metallic_specular = 1.0
 roughness = 0.35
 roughness_texture = SubResource("NoiseTexture2D_b85wq")
@@ -74,9 +92,9 @@ refraction_enabled = true
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dqn7y"]
 material = SubResource("StandardMaterial3D_ddvyw")
 radius = 0.07
-height = 1.447
+height = 1.193
 radial_segments = 4
-rings = 40
+rings = 0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xq3um"]
 material = SubResource("StandardMaterial3D_ddvyw")
@@ -109,16 +127,72 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4byh5"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(1.51, 2.43, 1)
+emission_shape = 3
+emission_box_extents = Vector3(6.07, 3.84, 2.33)
+gravity = Vector3(0, -2.77, 0)
+damping_min = 31.249
+damping_max = 37.745
+attractor_interaction_enabled = false
+scale_min = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87biq"]
+emission_shape_scale = Vector3(0, 0, 0)
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 6.98
+scale_over_velocity_min = 6.1
+scale_over_velocity_max = 71.86
+
+[sub_resource type="TorusMesh" id="TorusMesh_w5jd5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_sb66t")
+inner_radius = 0.879
+outer_radius = 0.207
+rings = 3
+ring_segments = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xdo3v"]
+resource_local_to_scene = true
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(2.76, 0.12, 1)
+emission_ring_height = 1.08
+emission_ring_radius = 14.0
+emission_ring_inner_radius = 11.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mesrp"]
+emission_shape_scale = Vector3(2.07, 1.37, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 2.19
+emission_ring_radius = 2.65
+emission_ring_inner_radius = 0.0
+inherit_velocity_ratio = 0.06
+gravity = Vector3(13.91, 0, 0)
+
 [node name="Particles" type="Node3D"]
 
 [node name="Triangle(gpu)" type="GPUParticles3D" parent="."]
-transform = Transform3D(6.27999, 0.0132043, 0.00272303, -1.98916e-09, 1.26835, -6.15058, -0.0134821, 6.15057, 1.26835, 0, 0.183266, 7.11583)
-amount = 278
-lifetime = 0.41
+transform = Transform3D(26.3799, 0.0554663, 0.0114381, -8.35574e-09, 5.32789, -25.8364, -0.0566334, 25.8363, 5.32787, 0, 0.183266, -0.495663)
+visible = false
+amount = 568
+amount_ratio = 0.622
+lifetime = 0.08
 interp_to_end = 0.26
 preprocess = 1.51
 speed_scale = 0.5
 explosiveness = 0.05
+interpolate = false
 visibility_aabb = AABB(0, 0, 0, 0, 0, 0)
 trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_kjot8")
@@ -126,6 +200,7 @@ draw_pass_1 = SubResource("TorusMesh_rj75h")
 
 [node name="COF Celebration (CPU)" type="CPUParticles3D" parent="."]
 transform = Transform3D(0.309249, -0.931383, -0.192067, 1.68849e-08, 0.201967, -0.979392, 0.950981, 0.302876, 0.0624581, -1.95035, -3.69181, -9.38266)
+visible = false
 amount = 268
 lifetime = 0.38
 preprocess = 1.81
@@ -145,6 +220,7 @@ initial_velocity_max = 188.37
 
 [node name="Rain(CPU)" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996765, 0.0803731, 0, -0.0803731, 0.996765, -1.95035, 10.9237, -2.54461)
+visible = false
 amount = 208
 lifetime = 0.01
 preprocess = 1.59
@@ -187,6 +263,7 @@ initial_velocity_max = 188.37
 
 [node name="stunned stars(cpu)" type="CPUParticles3D" parent="."]
 transform = Transform3D(-0.939836, 0.222354, -0.259359, 0.180696, -0.320747, -0.929769, -0.289927, -0.920695, 0.261271, -2.05192, -4.36247, 9.53674e-07)
+visible = false
 amount = 14
 lifetime = 0.05
 preprocess = 1.01
@@ -200,3 +277,60 @@ emission_ring_radius = 14.98
 emission_ring_inner_radius = -11.98
 direction = Vector3(0, 0, 0)
 spread = 0.0
+
+[node name="GPU RAIN" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996765, 0.0803731, 0, -0.0803731, 0.996765, -1.99563, 0.746814, -4.61478)
+
+[node name="big" type="GPUParticles3D" parent="GPU RAIN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0825155, 1.02333)
+amount = 508
+lifetime = 0.02
+interp_to_end = 0.15
+speed_scale = 7.55
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4byh5")
+draw_pass_1 = SubResource("CapsuleMesh_dqn7y")
+
+[node name="little" type="GPUParticles3D" parent="GPU RAIN"]
+amount = 328
+lifetime = 1.04
+speed_scale = 9.3
+randomness = 0.61
+process_material = SubResource("ParticleProcessMaterial_4byh5")
+draw_pass_1 = SubResource("CapsuleMesh_dqn7y")
+
+[node name="Political Power (GPU)" type="Node3D" parent="."]
+transform = Transform3D(0.383248, 0, 0.923646, 0, 1, 0, -0.923646, 0, 0.383248, -0.214215, 0.746814, 0.421295)
+
+[node name="arrow" type="GPUParticles3D" parent="Political Power (GPU)"]
+transform = Transform3D(0.895231, 0.44555, 0.00684023, -0.0109659, 0.0373742, -0.999241, -0.445468, 0.894476, 0.0383445, 0.103334, -0.216044, 0.969005)
+lifetime = 10.96
+preprocess = 1.86
+speed_scale = 30.96
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_87biq")
+draw_pass_1 = SubResource("TorusMesh_w5jd5")
+
+[node name="Stunned Star(GPU)" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.231334, -0.321807, -0.918109, 0.959523, -0.0803376, 0.269928, -0.160624, -0.94339, 0.290197, -2.05192, -4.36247, -0.719865)
+amount = 24
+amount_ratio = 0.367
+lifetime = 0.03
+interp_to_end = 1.0
+preprocess = 1.01
+speed_scale = 1.8
+fixed_fps = 24
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_xdo3v")
+draw_pass_1 = SubResource("ArrayMesh_cuq4f")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0865815, 0.975714, 0.201209, 2.04276e-08, 0.201967, -0.979392, -0.996245, -0.0847973, -0.0174866, 0.393535, 0.647095, 0.344851)
+amount = 518
+lifetime = 0.56
+interp_to_end = 0.11
+preprocess = 1.07
+speed_scale = 0.52
+randomness = 0.42
+process_material = SubResource("ParticleProcessMaterial_mesrp")
+draw_pass_1 = SubResource("PlaneMesh_jy7so")
