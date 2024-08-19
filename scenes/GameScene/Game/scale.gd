@@ -12,9 +12,10 @@ func _ready():
 		if skeleton:
 			var bone = skeleton.find_bone(bone_name)
 			if bone:
-				bone.scale = scale_factor
+				bone.set_scale_x(scale_factor.x)
+				bone.set_scale_y(scale_factor.y)
 
-				skeleton.update()
+				# skeleton.update()
 				print("Scaled bone: ", bone_name, " to ", scale_factor)
 			else:
 				print("Bone not found: ", bone_name)
