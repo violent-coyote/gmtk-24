@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dc4gwxaiurd5d"]
+[gd_scene load_steps=60 format=3 uid="uid://dc4gwxaiurd5d"]
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
 [ext_resource type="PackedScene" uid="uid://dkliw1s1ctaqn" path="res://assets/images/cloud.glb" id="8_byqvp"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cttd8mh8n8hvp" path="res://assets/images/onionboyexport/onion.tres" id="9_hcdr6"]
-
-[ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
-[ext_resource type="SpineSkeletonDataResource" uid="uid://bm1ci6ei6lkru" path="res://assets/images/catexport/cat.tres" id="10_dm246"]
-[ext_resource type="Script" path="res://scenes/GameScene/Game/scale.gd" id="10_g8d1n"]
-[ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
+[ext_resource type="PackedScene" uid="uid://bw3dh1l84yupv" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
+[ext_resource type="Texture2D" uid="uid://dt1yrgtfi56av" path="res://assets/images/Untitled.png" id="15_ee3ev"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wifk6"]
 noise_type = 2
@@ -297,9 +294,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
-
-[sub_resource type="Animation" id="Animation_rl1eo"]
-
+[sub_resource type="Animation" id="Animation_bg7cf"]
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -327,9 +322,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-
-[sub_resource type="Animation" id="Animation_40g4m"]
-
+[sub_resource type="Animation" id="Animation_cawnh"]
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -357,8 +350,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_ypjdp"]
-
+[sub_resource type="Animation" id="Animation_bpunf"]
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -386,9 +378,7 @@ tracks/1/keys = {
 "values": [true]
 }
 
-
-[sub_resource type="Animation" id="Animation_ydwqd"]
-
+[sub_resource type="Animation" id="Animation_ob7g0"]
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -416,9 +406,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-
-[sub_resource type="Animation" id="Animation_4iflh"]
-
+[sub_resource type="Animation" id="Animation_f8ahk"]
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -446,15 +434,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4kv4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obrul"]
 _data = {
-"-- Empty --": SubResource("Animation_4iflh"),
-"RESET": SubResource("Animation_4iflh"),
-"happy": SubResource("Animation_40g4m"),
-"happy_looped": SubResource("Animation_rl1eo"),
-"sad": SubResource("Animation_ydwqd"),
-"sad_looped": SubResource("Animation_ypjdp")
-
+"-- Empty --": SubResource("Animation_f8ahk"),
+"RESET": SubResource("Animation_f8ahk"),
+"happy": SubResource("Animation_cawnh"),
+"happy_looped": SubResource("Animation_bg7cf"),
+"sad": SubResource("Animation_ob7g0"),
+"sad_looped": SubResource("Animation_bpunf")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
@@ -729,7 +716,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_u4kv4")
+"": SubResource("AnimationLibrary_obrul")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -768,28 +755,10 @@ preview_frame = false
 preview_time = 0.0
 
 [node name="cat" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.01143, 0, -0.759374, 0, 2.15, 0, 0.759374, 0, -2.01143, 2.7247, 1.05944, -2.49863)
+transform = Transform3D(-0.935549, 0, -0.353197, 0, 1, 0, 0.353197, 0, -0.935549, 2.7247, 1.05944, -2.49863)
 material_override = SubResource("StandardMaterial3D_i633u")
 mesh = SubResource("QuadMesh_hhwh2")
 
 [node name="SubViewport" type="SubViewport" parent="cat"]
 transparent_bg = true
 size = Vector2i(1012, 532)
-
-[node name="SpineSprite" type="SpineSprite" parent="cat"]
-position = Vector2(562, 476)
-skeleton_data_res = ExtResource("10_dm246")
-preview_skin = "Default"
-preview_animation = "-- Empty --"
-preview_frame = false
-preview_time = 0.0
-
-[node name="SpineBoneNode" type="SpineBoneNode" parent="cat/SpineSprite"]
-show_behind_parent = true
-position = Vector2(-3.17444, -114.83)
-rotation = -1.5708
-bone_name = "leftarm"
-enabled = false
-script = ExtResource("10_g8d1n")
-spine_node = NodePath("..")
-bone_name = "leftarm"
