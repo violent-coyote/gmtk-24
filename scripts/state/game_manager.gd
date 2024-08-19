@@ -20,7 +20,7 @@ func _ready():
 
 	# game_ui.add_button.pressed.connect(instantiate_unit)
 	game_ui.update_all_labels()
-
+	init_buttons()
 
 
 	instantiate_unit()
@@ -101,7 +101,8 @@ func make_it_rain():
 func make_it_reign():
 	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, -.1)
 	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, -.5)
-	affect_all_unit_event(UGC.StatPrimitives.HUNGER, .7)
+	affect_all_unit_event(UGC.StatPrimitives.HUNGER, .1)
+	affect_all_unit_event(UGC.StatPrimitives.HEALTH, .2)
 	pass
 
 func optional():
@@ -110,14 +111,19 @@ func optional():
 
 func party_time():
 	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .3)
+	affect_all_unit_event(UGC.StatPrimitives.HEALTH, -.3)
 	pass
 
 func drama():
-	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, -.5)
+	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, -.2)
+	affect_all_unit_event(UGC.StatPrimitives.HEALTH, -.1)
+	affect_all_unit_event(UGC.StatPrimitives.HEALTH, -.1)
+	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .3)
 	pass
 
 func new_album():
-	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, .5)
+	affect_all_unit_event(UGC.StatPrimitives.HAPPINESS, .1)
+	affect_all_unit_event(UGC.StatPrimitives.SOCIAL, .1)
 	pass
 
 func instantiate_unit():

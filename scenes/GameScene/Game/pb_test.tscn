@@ -2,11 +2,12 @@
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bmqqa7024muyl" path="res://assets/images/skull export/skull.tres" id="2_s0kfq"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://drehrvnjbtjwl" path="res://assets/images/skull export/flame rig/v2flamerig/flamerigv2.tres" id="3_e0xkx"]
-[ext_resource type="Texture2D" uid="uid://dbbit8u7qfvfv" path="res://assets/images/pyramid.png" id="5_val8w"]
-[ext_resource type="PackedScene" uid="uid://caxmlv1tah0p6" path="res://assets/images/palm.glb" id="6_q2fpy"]
+[ext_resource type="Texture2D" uid="uid://bi2e3hybfolmq" path="res://assets/images/pyramid.png" id="5_val8w"]
+[ext_resource type="PackedScene" uid="uid://djdu357phys4c" path="res://assets/images/palm.glb" id="6_q2fpy"]
 [ext_resource type="PackedScene" uid="uid://d13qpx5lxti1p" path="res://scenes/GameScene/Levels/bush.tscn" id="7_5ps67"]
-[ext_resource type="PackedScene" uid="uid://s2advrvqm1yu" path="res://assets/images/cloud.glb" id="8_byqvp"]
+[ext_resource type="PackedScene" uid="uid://dkliw1s1ctaqn" path="res://assets/images/cloud.glb" id="8_byqvp"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://cttd8mh8n8hvp" path="res://assets/images/onionboyexport/onion.tres" id="9_hcdr6"]
+
 [ext_resource type="PackedScene" uid="uid://blur1ajap7s6h" path="res://assets/images/purplegrass.glb" id="9_vjpqo"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bm1ci6ei6lkru" path="res://assets/images/catexport/cat.tres" id="10_dm246"]
 [ext_resource type="Texture2D" uid="uid://chuman86hc2c8" path="res://assets/images/Untitled.png" id="15_ee3ev"]
@@ -295,7 +296,9 @@ albedo_texture = SubResource("ViewportTexture_komru")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
+
 [sub_resource type="Animation" id="Animation_rl1eo"]
+
 resource_name = "happy_looped"
 length = 0.3
 tracks/0/type = "value"
@@ -323,7 +326,9 @@ tracks/1/keys = {
 "values": [true]
 }
 
+
 [sub_resource type="Animation" id="Animation_40g4m"]
+
 resource_name = "happy"
 length = 0.3
 tracks/0/type = "value"
@@ -352,6 +357,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ypjdp"]
+
 resource_name = "sad_looped"
 length = 0.733333
 tracks/0/type = "value"
@@ -379,7 +385,9 @@ tracks/1/keys = {
 "values": [true]
 }
 
+
 [sub_resource type="Animation" id="Animation_ydwqd"]
+
 resource_name = "sad"
 length = 0.733333
 tracks/0/type = "value"
@@ -407,7 +415,9 @@ tracks/1/keys = {
 "values": [false]
 }
 
+
 [sub_resource type="Animation" id="Animation_4iflh"]
+
 resource_name = "RESET"
 length = 0.5
 tracks/0/type = "value"
@@ -443,6 +453,7 @@ _data = {
 "happy_looped": SubResource("Animation_rl1eo"),
 "sad": SubResource("Animation_ydwqd"),
 "sad_looped": SubResource("Animation_ypjdp")
+
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwd0"]
