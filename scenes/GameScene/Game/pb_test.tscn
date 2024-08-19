@@ -297,7 +297,7 @@ albedo_texture = SubResource("ViewportTexture_komru")
 [sub_resource type="QuadMesh" id="QuadMesh_3hi15"]
 
 
-[sub_resource type="Animation" id="Animation_vkab6"]
+[sub_resource type="Animation" id="Animation_rl1eo"]
 
 resource_name = "happy_looped"
 length = 0.3
@@ -327,7 +327,7 @@ tracks/1/keys = {
 }
 
 
-[sub_resource type="Animation" id="Animation_vypqh"]
+[sub_resource type="Animation" id="Animation_40g4m"]
 
 resource_name = "happy"
 length = 0.3
@@ -356,8 +356,7 @@ tracks/1/keys = {
 "values": [false]
 }
 
-
-[sub_resource type="Animation" id="Animation_myvdx"]
+[sub_resource type="Animation" id="Animation_ypjdp"]
 
 resource_name = "sad_looped"
 length = 0.733333
@@ -387,7 +386,7 @@ tracks/1/keys = {
 }
 
 
-[sub_resource type="Animation" id="Animation_gtnmh"]
+[sub_resource type="Animation" id="Animation_ydwqd"]
 
 resource_name = "sad"
 length = 0.733333
@@ -417,7 +416,7 @@ tracks/1/keys = {
 }
 
 
-[sub_resource type="Animation" id="Animation_jvjso"]
+[sub_resource type="Animation" id="Animation_4iflh"]
 
 resource_name = "RESET"
 length = 0.5
@@ -446,15 +445,14 @@ tracks/1/keys = {
 "values": [false]
 }
 
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_asgth"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frfro"]
 _data = {
-"-- Empty --": SubResource("Animation_jvjso"),
-"RESET": SubResource("Animation_jvjso"),
-"happy": SubResource("Animation_vypqh"),
-"happy_looped": SubResource("Animation_vkab6"),
-"sad": SubResource("Animation_gtnmh"),
-"sad_looped": SubResource("Animation_myvdx")
+"-- Empty --": SubResource("Animation_4iflh"),
+"RESET": SubResource("Animation_4iflh"),
+"happy": SubResource("Animation_40g4m"),
+"happy_looped": SubResource("Animation_rl1eo"),
+"sad": SubResource("Animation_ydwqd"),
+"sad_looped": SubResource("Animation_ypjdp")
 
 }
 
@@ -730,7 +728,7 @@ track_index = 0
 
 [node name="SpineSprite Track 0" type="AnimationPlayer" parent="flame crab/SubViewport/SpineSprite/SpineAnimationTrack"]
 libraries = {
-"": SubResource("AnimationLibrary_asgth")
+"": SubResource("AnimationLibrary_frfro")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
