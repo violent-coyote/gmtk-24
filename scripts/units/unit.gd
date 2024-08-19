@@ -16,7 +16,7 @@ var kiss_state: KissState
 var busy := false
 
 
-const MAX_SCALE = 10 #1.5
+const MAX_SCALE = 1.2
 
 ## Animations
 @onready var love_fx = $LoveParticles3D
@@ -26,9 +26,6 @@ const MAX_SCALE = 10 #1.5
 @onready var cat_spine_sprite : SpineSprite = $CatSpineSprite3D/SubViewport/SpineSprite
 @onready var onion_spine_sprite : SpineSprite = $OnionSpineSprite3D/SubViewport/SpineSprite
 
-@onready var cat_sprite3d : Sprite3D = $CatSpineSprite3D/Sprite3D
-@onready var onion_sprite3d : Sprite3D = $OnionSpineSprite3D/Sprite3D
-@onready var crab_sprite3d : Sprite3D = $CrabSpineSprite3D/Sprite3D
 @onready var spine_sprite : SpineSprite 
 
 # dialog box
@@ -98,10 +95,23 @@ func update_skeleton_scale():
 	# spine_skin.
 	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
 	
-	var root = skeleton.get_root_bone()
-	var scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
-	root.set_scale_x(scale)
-	root.set_scale_y(scale)
+	# if personality_data["unit_type"] == UGC.UnitTypes.CRAB:
+	# 	skeleton.find_bone("rightarmbone").set_scale_x(MAX_SCALE)
+	# 	skeleton.find_bone("rightarmbone").set_scale_y(MAX_SCALE)
+
+	# var arr = skeleton.get_bones()
+	# var stat = UGC.StatPrimitives.values()[randi() % UGC.StatPrimitives.values().size()]
+	# var scale = clamp(MAX_SCALE * personality_data["stats"][stat], 0.3, MAX_SCALE)
+	# for bone in arr:
+	# 	# randomly pick a trait and based on it set the scale of the bone
+	# 	bone.set_scale_x(scale)
+	# 	bone.set_scale_y(scale)
+	# skeleton.find_bone("rightarmbone").set_scale_x(3.0)
+	# skeleton.find_bone("rightarmbone").set_scale_y(3.0)
+	# var root = skeleton.get_root_bone()
+	# var scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
+	# root.set_scale_x(scale)
+	# root.set_scale_y(scale)
 	
 	print("set scale to: " + str(scale))
 
@@ -126,22 +136,16 @@ func randomize_personality():
 		stats[UGC.StatPrimitives.SOCIAL] = 0.2
 		#
 		cat_spine_sprite.get_parent().get_parent().show()
-		if !is_web:
-			cat_sprite3d.hide()
 		spine_sprite = cat_spine_sprite
 		print('displaying cat')
 	if unit_type == UGC.UnitTypes.ONION:
 		stats[UGC.StatPrimitives.HEALTH] = 0.2
 		onion_spine_sprite.get_parent().get_parent().show()
-		if !is_web:
-			onion_sprite3d.hide()
 		spine_sprite = onion_spine_sprite
 		print('displaying onion')
 	if unit_type == UGC.UnitTypes.CRAB:
 		stats[UGC.StatPrimitives.HUNGER] = 0.2
 		crab_spine_sprite.get_parent().get_parent().show()
-		if !is_web:
-			crab_sprite3d.hide()
 		spine_sprite = crab_spine_sprite
 		print('displaying crab')
 
