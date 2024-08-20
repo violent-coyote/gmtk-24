@@ -46,6 +46,7 @@ parameters/looping = true
 visible = false
 
 [node name="InputDisplayLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
