@@ -38,7 +38,7 @@ var tween:Tween
 signal health_updated
 
 @onready var camera = $Head/Camera3D
-# @onready var raycast = $Head/Camera/RayCast
+# @onready var raycast = $Head/RayCast3D
 # @onready var muzzle = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Muzzle
 # @onready var container = $Head/Camera3D/SubViewportContainer/SubViewport/MuzzleCam/Node3D
 # @onready var sound_footsteps = $SoundFootsteps
@@ -49,8 +49,8 @@ signal health_updated
 
 func _ready():
 	
-	pass
 	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 	
 	# weapon = weapons[weapon_index] # Weapon must never be nil
 	# initiate_change_weapon(weapon_index)
@@ -98,6 +98,14 @@ func _physics_process(delta):
 		camera.position.y = -0.1
 	
 	previously_floored = is_on_floor()
+
+	# if raycast.is_colliding():
+	# 	# check if object is a unit
+	# 	var obj = raycast.get_collider()
+	# 	if obj.is_in_group("unit"):
+	# 		# obj is Unit
+	# 		print("is this happening")
+	# 		obj.unit_clicked.emit()
 	
 	# Falling/respawning
 	
@@ -155,7 +163,7 @@ func handle_controls(_delta):
 			jump_double = false
 			
 		if(jump_single): action_jump()
-		$Audio_Jump.play()
+		# $Audio_Jump.play()
 		
 	# Weapon switching
 	

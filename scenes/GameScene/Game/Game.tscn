@@ -513,7 +513,7 @@ mesh = SubResource("CylinderMesh_ttr31")
 skeleton = NodePath("")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="World3D/Scene"]
-transform = Transform3D(-0.24551, 0, 0.969394, 0, 1, 0, -0.969394, 0, -0.24551, -1.34317, 1.80266, -2.68248)
+transform = Transform3D(-0.985408, 0, 0.17021, 0, 1, 0, -0.17021, 0, -0.985408, -1.343, 50, -2.682)
 script = ExtResource("7_bjdqh")
 
 [node name="Head" type="Node3D" parent="World3D/Scene/CharacterBody3D"]
