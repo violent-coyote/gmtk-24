@@ -49,7 +49,7 @@ signal health_updated
 
 func _ready():
 	
-	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 	
 	# weapon = weapons[weapon_index] # Weapon must never be nil
@@ -121,6 +121,16 @@ func _input(event):
 		
 		rotation_target.y -= event.relative.x / mouse_sensitivity
 		rotation_target.x -= event.relative.y / mouse_sensitivity
+	
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# switch mouse mode from captured to visible or vice versa
+		var mouse_mode = Input.mouse_mode
+		if mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
 
 func handle_controls(_delta):
 	
