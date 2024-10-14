@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=4 uid="uid://cu35n8vrbn7jn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xdo3v"]
+resource_local_to_scene = true
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(2.76, 0.12, 1)
+emission_ring_height = 1.08
+emission_ring_radius = 14.0
+emission_ring_inner_radius = 11.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vpdb"]
+albedo_color = Color(1, 1, 0, 1)
+metallic = 0.47
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0.941176, 0.529412, 0, 1)
+normal_enabled = true
+normal_scale = 7.1
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cuq4f"]
+_surfaces = [{
+"aabb": AABB(-1, -0.25, -0.951057, 1.80902, 0.5, 1.90211),
+"format": 34896613383,
+"index_count": 120,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQABAAAAAUABQAAAAYABgAAAAcABwAAAAgACAAAAAkACQAAAAoACgAAAAIACwAMAA0ADQAMAA4ADwAQABEAEQAQABIAEwAUABUAFQAUABYAFwAYABkAGQAYABoAGwAcAB0AHQAcAB4AHwAgACEAIQAgACIAIwAkACUAJQAkACYAJwAoACkAKQAoACoAKwAsAC0ALQAsAC4ALwAwADEAMQAwADIAMwA0ADUANAAzADYANAA2ADcANAA3ADgANAA4ADkANAA5ADoANAA6ADsANAA7ADwANAA8AD0ANAA9ADUA"),
+"material": SubResource("StandardMaterial3D_4vpdb"),
+"name": "Star",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 62,
+"vertex_data": PackedByteArray("go3///9///9E1P///3////////8az////////+Qw//9go////z///8hh//8AAP//RFT//3FY//8AAP///3///0RU//+Np///yGH///////9go////7///0TU////f/P6RNQAAP9/8/r/////Gs/z+v//AAAaz/P6RNQAAP9/ovdE1P///3+i9///AADkMKL3/////+Qwovf//wAA5DC0+v/////kMLT6YKMAAP8/tPpgo////z+0+mCjAAD/P6j2YKP///8/qPbIYQAAAACo9shh//8AAKj2yGEAAAAA4cXIYf//AADhxURUAABxWOHFRFT//3FY4cVEVAAAcVjz70RU//9xWPPvAAAAAP9/8+8AAP///3/z7wAAAAD/f/quAAD///9/+q5EVAAAjaf6rkRU//+Np/quRFQAAI2nH7pEVP//jacfushhAAD//x+6yGH/////H7rIYQAA//+e6chh/////57pYKMAAP+/nulgo////7+e6WCjAAD/v1O5YKP///+/U7n//wAAGs9Tuf////8az1O5RNQAAP9///+CjQAA/3//////AAAaz/////8AAOQw//9gowAA/z///8hhAAAAAP//RFQAAHFY//8AAAAA/3///0RUAACNp///yGEAAP////9gowAA/7////9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/N8oNdzfKDXc3yg13N8oNdxuucHobrnB6G65wehuucHq2R+vCtkfrwrZH68K2R+vCAMo2aQDKNmkAyjZpAMo2aa9+jP2vfoz9r36M/a9+jP0+VAfKPlQHyj5UB8o+VAfKp20Jn6dtCZ+nbQmfp20Jn7B+Lf2wfi39sH4t/bB+Lf3Jokl1yaJJdcmiSXXJokl10HbqitB26orQduqK0Hbqiv9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+
+[node name="Stunned Star(GPU)" type="GPUParticles3D"]
+transform = Transform3D(0.231334, -0.321807, -0.918109, 0.959523, -0.0803376, 0.269928, -0.160624, -0.94339, 0.290197, -2.05192, -4.36247, -0.719865)
+amount = 24
+amount_ratio = 0.367
+lifetime = 0.03
+interp_to_end = 1.0
+preprocess = 1.01
+speed_scale = 1.8
+fixed_fps = 24
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_xdo3v")
+draw_pass_1 = SubResource("ArrayMesh_cuq4f")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjjp8jskd8xw1"]
+
+[ext_resource type="MeshLibrary" uid="uid://bgwb3oxi4qurr" path="res://assets/images/tiles2.tres" id="1_clhdw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oohsn"]
+sky_top_color = Color(0.235757, 0.347829, 1, 1)
+sky_horizon_color = Color(0.886759, 0.492481, 0.812249, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.923093, 0.504363, 0.633808, 1)
+
+[sub_resource type="Sky" id="Sky_xb31v"]
+sky_material = SubResource("ProceduralSkyMaterial_oohsn")
+
+[sub_resource type="Environment" id="Environment_vbrt2"]
+background_mode = 2
+sky = SubResource("Sky_xb31v")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("1_clhdw")
+cell_size = Vector3(0.92, 0.32, 1.51)
+cell_octant_size = 1
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(65535, 0, 0, 65535, 65535, 0, 1, 0, 0, 0, 1, 0, 65534, 1, 0, 65533, 0, 0, 65535, 2, 0, 2, 65535, 0, 65532, 65535, 0, 65534, 65535, 0, 0, 65535, 0, 65532, 1, 1, 65533, 2, 1, 1, 2, 1, 2, 1, 1, 65533, 65534, 1, 65538, 65535, 1, 65536, 1, 1, 131072, 1, 1, 196608, 1, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="GridMap2" type="GridMap" parent="."]
+mesh_library = ExtResource("1_clhdw")
+cell_size = Vector3(0.92, 0.32, 1.61)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(65535, 0, 655360, 65533, 0, 655360, 65534, 1, 655360, 65534, 65535, 655360, 65532, 1, 655360, 65532, 65535, 655360, 0, 1, 655360, 0, 65535, 655360, 1, 0, 655360, 65531, 0, 655360, 131071, 0, 655361)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vbrt2")
