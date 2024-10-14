@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://rfpnga7pmm60"]
+
+[ext_resource type="PackedScene" uid="uid://c6c7aeo730gwv" path="res://assets/images/grass.glb" id="1_vcr1a"]
+[ext_resource type="PackedScene" uid="uid://4kc7m7bdy78f" path="res://assets/images/face.glb" id="3_gqr7h"]
+[ext_resource type="PackedScene" uid="uid://br1mv3pbmysyx" path="res://assets/images/blank.glb" id="3_o4g3o"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="grass" parent="." instance=ExtResource("1_vcr1a")]
+
+[node name="blank" parent="." instance=ExtResource("3_o4g3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.273748, 0.32789, 0.00259101)
+
+[node name="face" parent="." instance=ExtResource("3_gqr7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27358, 0, 0)
