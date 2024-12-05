@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpr8qt3bd1qn6"]
+[gd_scene load_steps=20 format=3 uid="uid://bpr8qt3bd1qn6"]
 
 [ext_resource type="PackedScene" uid="uid://g1k0r4b27opx" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_s3j6w"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_nfqgk"]
 [ext_resource type="AudioStream" uid="uid://bfpsiountk4eg" path="res://assets/audio/Treeandbirdsmidnight.ogg" id="3_72shl"]
 [ext_resource type="PackedScene" uid="uid://dc4gwxaiurd5d" path="res://scenes/GameScene/Game/pb_test.tscn" id="3_vho0x"]
+[ext_resource type="Texture2D" uid="uid://bk8ve8tfkueo0" path="res://assets/images/logott.png" id="4_xajeg"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -349,6 +350,9 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdoc3"]
+texture = ExtResource("4_xajeg")
+
 [node name="MainMenu" instance=ExtResource("1_s3j6w")]
 script = ExtResource("2_nfqgk")
 game_scene_path = "res://scenes/GameScene/Game/Game.tscn"
@@ -369,6 +373,21 @@ bus = &"SFX"
 
 [node name="VersionNameLabel" parent="." index="5"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="Panel" parent="MenuContainer/VBoxContainer/TitlesMargin" index="0"]
+visible = false
+custom_minimum_size = Vector2(512, 512)
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_gdoc3")
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/VBoxContainer/TitlesMargin" index="1"]
+layout_mode = 2
+texture = ExtResource("4_xajeg")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="TitlesContainer" parent="MenuContainer/VBoxContainer/TitlesMargin" index="2"]
+visible = false
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
 modulate = Color(1, 1, 1, 0)
