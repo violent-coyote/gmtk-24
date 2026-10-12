@@ -31,6 +31,7 @@ const MAX_SCALE = 1.2
 # dialog box
 @onready var dialog_box : Sprite3D = $DialogBoxSprite3D
 @onready var dialog_box_label : Label3D = $DialogBoxSprite3D/Label3D
+
 # interactions:
 # stub toe on rocks (collide with object)
 # kiss (collide with other unit)
@@ -62,6 +63,9 @@ func _ready():
 
 
 	unit_clicked.connect(pretty_print_personality)
+	# connect to the intersect ray collision signal to trigger the unit_clicked signal
+	
+
 	randomize_personality()
 
 
@@ -87,15 +91,136 @@ func _process(delta):
 	
 	move_and_slide()
 
+
+# onion
+
+# Here's a cleaned-up list of the bones named in the skeleton file:
+
+# 1. cheek left
+# 2. cheek right
+# 3. left eye
+# 4. left leg
+# 5. mouth
+# 6. nose
+# 7. right arm
+# 8. right eye
+# 9. right leg
+# 10. slice1
+# 11. slice2
+# 12. root
+# 13. body
+# 14. torso
+# 15. rightarm
+# 16. leftarm
+# 17. leftleg
+# 18. rightleg
+# 19. righteye
+# 20. lefteye
+# 21. bone2
+# 22. bone3
+
+# This list includes all the unique bone names mentioned in the file, without duplicates. Note that some entries like "slice1" and "slice2" may not be actual bones, but rather parts or sections defined in the skeleton file for animation or modeling purposes.
+
+# cat - asterisk if its shared
+
+# eyebrowleft
+# eyebrowright
+# eyeleft *
+# eyeright
+# head
+# leftarm *
+# left leg *
+# mouth *
+# rightarm *
+# right leg *
+# root *
+# bone
+# righteye *
+# lefteye *
+# rightfoot
+# leftleg *
+# lefteyebrow
+# righteyebrow
+
+# crab
+
+# body
+# flame hair
+# happy mouth
+# idle mouth
+# left claw
+# left eye *
+# left leg *
+# right claw
+# right eye *
+# right leg *
+# root *
+# bone *
+# chestbone
+# rightarmbone
+# leftarmbone
+# leftlegbone
+# rightlegbone
+# hairbone
+# lefteyebone
+# righteyebone
+# mouthbone1
+# mouthbone2
+
+# universal
+# left eye
+# left leg
+# right eye
+# right leg
+# root
+# bone
+
 func update_skeleton_scale():
 	if spine_sprite == null:
 		return
 	var skeleton : SpineSkeleton = spine_sprite.get_skeleton()
-	# var spine_skin := skeleton.get_skin()
-	# spine_skin.
-	# var rl := skeleton.get_attachment_by_slot_name("right leg", "right leg")
+	if skeleton == null:
+		return
 	
-	# if personality_data["unit_type"] == UGC.UnitTypes.CRAB:
+	# legs are tied to HEALTH
+	# skeleton.find_bone("left leg").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+	# skeleton.find_bone("left leg").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+	# skeleton.find_bone("right leg").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+	# skeleton.find_bone("right leg").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE))
+
+	if personality_data["unit_type"] == UGC.UnitTypes.CRAB:
+		# crab flame hair scales with happiness
+		# skeleton.find_bone("flame hair").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HAPPINESS], 0.3, MAX_SCALE))
+		# skeleton.find_bone("flame hair").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HAPPINESS], 0.3, MAX_SCALE))
+		# crab claws scale with hunger
+		# skeleton.find_bone("left claw").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HUNGER], 0.3, MAX_SCALE))
+		# skeleton.find_bone("left claw").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HUNGER], 0.3, MAX_SCALE))
+		# skeleton.find_bone("right claw").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HUNGER], 0.3, MAX_SCALE))
+		# skeleton.find_bone("right claw").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HUNGER], 0.3, MAX_SCALE))
+		pass
+	elif personality_data["unit_type"] == UGC.UnitTypes.CAT:
+		# cat head scales with sociail
+		skeleton.find_bone("head").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.SOCIAL], 0.3, MAX_SCALE))
+		skeleton.find_bone("head").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.SOCIAL], 0.3, MAX_SCALE))
+	elif personality_data["unit_type"] == UGC.UnitTypes.ONION:
+		# onion nose scales with social
+		skeleton.find_bone("nose").set_scale_x(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.SOCIAL], 0.3, MAX_SCALE))
+		skeleton.find_bone("nose").set_scale_y(clampf(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.SOCIAL], 0.3, MAX_SCALE))
+
+	# var bones = skeleton.get_bones()
+
+	# var base_scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
+	# for bone in bones: 
+	# 	var rx = 1 + randf_range(-0.3, 0.3)
+	# 	var ry = 1 + randf_range(-0.3, 0.3)
+
+	# 	bone.set_scale_x(rx * base_scale)
+	# 	bone.set_scale_y(ry * base_scale)
+
+
+	#var scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
+	#root.set_scale_x(scale)
+	#root.set_scale_y(scale)
 	# 	skeleton.find_bone("rightarmbone").set_scale_x(MAX_SCALE)
 	# 	skeleton.find_bone("rightarmbone").set_scale_y(MAX_SCALE)
 
@@ -106,14 +231,13 @@ func update_skeleton_scale():
 	# 	# randomly pick a trait and based on it set the scale of the bone
 	# 	bone.set_scale_x(scale)
 	# 	bone.set_scale_y(scale)
-	# skeleton.find_bone("rightarmbone").set_scale_x(3.0)
 	# skeleton.find_bone("rightarmbone").set_scale_y(3.0)
 	# var root = skeleton.get_root_bone()
 	# var scale = clamp(MAX_SCALE * personality_data["stats"][UGC.StatPrimitives.HEALTH], 0.3, MAX_SCALE)
 	# root.set_scale_x(scale)
 	# root.set_scale_y(scale)
 	
-	print("set scale to: " + str(scale))
+	# print("set scale to: " + str(scale))
 
 func randomize_personality():
 	personality_data["name"] = UGC.list_of_names[randi() % UGC.list_of_names.size()]
@@ -168,16 +292,16 @@ func pretty_print_personality():
 
 	stats += "my highest stat is: " + pretty_print_trait_to_string(max_stat) + " at " + str(round_to_dec(personality_data["stats"][max_stat], 2)) + "\n"
 	
-	for stat in UGC.StatPrimitives.values():
-		if stat != max_stat:
-			stats += pretty_print_trait_to_string(stat) + ": " + str(round_to_dec(personality_data["stats"][stat], 2)) + "\n"
+	# for stat in UGC.StatPrimitives.values():
+	# 	if stat != max_stat:
+	# 		stats += pretty_print_trait_to_string(stat) + ": " + str(round_to_dec(personality_data["stats"][stat], 2)) + "\n"
 
 	dialog_box_label.text = stats
 	dialog_box.show()
 	change_state(idle_state)
 
-	# wait 8 seconds, then hide the dialogue box
-	await get_tree().create_timer(4.0).timeout
+	# wait 4 seconds, then hide the dialogue box
+	await get_tree().create_timer(3.0).timeout
 	dialog_box.hide()
 	busy = false
 
@@ -237,18 +361,6 @@ func handle_collision(collision: KinematicCollision3D):
 
 
 
-func scale_slot(slot_name: String, scale_factor: float):
-	var skeleton: SpineSkeleton = spine_sprite.get_skeleton()
-	var spine_skin:= skeleton.get_skin()
-	# Find the specified slot
-	if spine_skin:
-		var attachment_data := spine_skin.get_attachment(0, slot_name)
-		if attachment_data:
-			attachment_data.width *= scale_factor
-			attachment_data.height *= scale_factor
-			# attachment_data.scale_x = scale_factor
-			# attachment_data.scale_y = scale_factor
-			# skeleton.set_skin(spine_skin)
 # region State Machine
 # Base State class
 class State:
